@@ -22,6 +22,14 @@ ARG BUILD_HASH
 
 WORKDIR /app
 
+COPY package*.json ./
+
+RUN npm install -g npm@latest
+
+RUN npm config set registry http://registry.npmjs.org/
+
+RUN npm install
+
 COPY package.json package-lock.json ./
 RUN npm ci
 
