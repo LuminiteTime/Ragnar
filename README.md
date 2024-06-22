@@ -2,9 +2,13 @@
 
 Welcome to Ragnar! This guide will walk you through cloning the repository and starting the application using Docker.
 
+## Ollama installation (manual for now)
+
+First, you need to install Ollama. Visit the [Ollama download page](https://ollama.com/download) to get the latest version of the Ollama library. Follow the installation instructions for your operating system. Then run the app (no interface will appear).
+
 ## Cloning the Repository
 
-First, you need to clone the Ragnar repository to your local machine. You can do this using either HTTPS or SSH. Choose the method that suits you best:
+Then, you need to clone the Ragnar repository to your local machine. You can do this using either HTTPS or SSH. Choose the method that suits you best:
 
 - **HTTPS:**
 
