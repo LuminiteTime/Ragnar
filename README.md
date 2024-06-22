@@ -1,6 +1,6 @@
 # Ragnar Setup Guide
 
-Welcome to Ragnar! This guide will walk you through cloning the repository and starting the application using Docker.
+Welcome to Ragnar v.0! This guide will walk you through cloning the repository and starting the application using Docker.
 
 ## Ollama installation (manual for now)
 
