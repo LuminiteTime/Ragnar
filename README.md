@@ -38,5 +38,5 @@ Congratulations! You have successfully cloned and started Ragnar.
 
 - When docker compose is done, go to "http://localhost:3000"
 - It is possible that you will need to wait some time before the home page appears
-- Click "Sign up", enter whatever name, email, and password you want (this data is not sent anywhere), then press "Create Account".
+- Click "Sign up", enter any name, email, and password you want, then press "Create Account".
 - To start the chat with LLM you have to click "Selecta model" in the top-left corner of the chat window, then click arrow-down button and write "phi3:mini". Then press "Pull phi3:mini from Ollama.com" and wait until LLM is downloaded (you will need Internet connection for it). When LLM has been downloaded, you can start chatting with it (Internet connection is not needed).
