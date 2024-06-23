@@ -10,12 +10,12 @@ services:
 
   open-webui:
     build:
-      # context: .
+      context: .
       args:
         OLLAMA_BASE_URL: '/ollama'
       dockerfile: Dockerfile
     # image: ghcr.io/open-webui/open-webui:${WEBUI_DOCKER_TAG-main}
-    image: docker.com/brainpumpkin/ragnar:dev
+    image: brainpumpkin/ragnar:dev
     container_name: Ragnar
     volumes:
       - open-webui:/app/backend/data
