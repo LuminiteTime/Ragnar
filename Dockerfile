@@ -31,12 +31,13 @@ RUN npm config set registry http://registry.npmjs.org/
 RUN npm install
 
 COPY package.json package-lock.json ./
+
 RUN npm ci
 
 COPY . .
 ENV APP_BUILD_HASH=${BUILD_HASH}
 
-RUN npm --max-old-space-size=6144 run build
+RUN npm run build
 
 # RUN npm run build
 
@@ -168,3 +169,4 @@ ARG BUILD_HASH
 ENV WEBUI_BUILD_VERSION=${BUILD_HASH}
 
 CMD [ "bash", "start.sh"]
+# CMD [ "bash" ]
