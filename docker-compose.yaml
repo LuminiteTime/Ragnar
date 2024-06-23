@@ -10,7 +10,7 @@ services:
 
   open-webui:
     build:
-      context: .
+      # context: .
       args:
         OLLAMA_BASE_URL: '/ollama'
       dockerfile: Dockerfile
