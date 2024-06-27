@@ -700,7 +700,7 @@
 									class="scrollbar-hidden bg-gray-50 dark:bg-gray-850 dark:text-gray-100 outline-none w-full py-3 px-1 rounded-xl resize-none h-[48px]"
 									placeholder={chatInputPlaceholder !== ''
 										? chatInputPlaceholder
-										: $i18n.t('Kill your self')}
+										: $i18n.t('Waiting for your message, Denis...')}
 									bind:value={prompt}
 									on:keypress={(e) => {
 										if (
