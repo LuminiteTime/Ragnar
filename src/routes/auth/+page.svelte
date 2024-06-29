@@ -20,7 +20,6 @@
 	const setSessionUser = async (sessionUser) => {
 		if (sessionUser) {
 			console.log(sessionUser);
-			// toast.success($i18n.t(`You're now logged in.`));
 			localStorage.token = sessionUser.token;
 
 			$socket.emit('user-join', { auth: { token: sessionUser.token } });
@@ -31,7 +30,6 @@
 
 	const signInHandler = async () => {
 		const sessionUser = await userSignIn(email, password).catch((error) => {
-			// toast.error(error);
 			return null;
 		});
 
@@ -41,7 +39,6 @@
 	const signUpHandler = async () => {
 		const sessionUser = await userSignUp(name, email, password, generateInitialsImage(name)).catch(
 			(error) => {
-				// toast.error(error);
 				return null;
 			}
 		);
