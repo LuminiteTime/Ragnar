@@ -86,7 +86,7 @@ class ChatTable:
                 "id": id,
                 "user_id": user_id,
                 "title": (
-                    form_data.chat["title"] if "title" in form_data.chat else "New Chat"
+                    form_data.chat["title"] if "title" in form_data.chat else "Such My Dick"
                 ),
                 "chat": json.dumps(form_data.chat),
                 "created_at": int(time.time()),
