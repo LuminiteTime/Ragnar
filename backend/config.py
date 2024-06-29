@@ -79,9 +79,9 @@ for source in log_sources:
 
 log.setLevel(SRC_LOG_LEVELS["CONFIG"])
 
-WEBUI_NAME = os.environ.get("WEBUI_NAME", "Open WebUI")
-if WEBUI_NAME != "Open WebUI":
-    WEBUI_NAME += " (Open WebUI)"
+WEBUI_NAME = os.environ.get("WEBUI_NAME", "Ragnar")
+if WEBUI_NAME != "Ragnar":
+    WEBUI_NAME += " (Ragnar)"
 
 WEBUI_URL = os.environ.get("WEBUI_URL", "http://localhost:3000")
 
@@ -98,7 +98,7 @@ try:
     PACKAGE_DATA = json.loads((BASE_DIR / "package.json").read_text())
 except:
     try:
-        PACKAGE_DATA = {"version": importlib.metadata.version("open-webui")}
+        PACKAGE_DATA = {"version": importlib.metadata.version("ragnar")}
     except importlib.metadata.PackageNotFoundError:
         PACKAGE_DATA = {"version": "0.0.0"}
 
@@ -444,7 +444,7 @@ if ENV == "prod":
         else:
             OLLAMA_BASE_URL = "http://host.docker.internal:11434"
     elif K8S_FLAG:
-        OLLAMA_BASE_URL = "http://ollama-service.open-webui.svc.cluster.local:11434"
+        OLLAMA_BASE_URL = "http://ollama-service.ragnar.svc.cluster.local:11434"
 
 
 OLLAMA_BASE_URLS = os.environ.get("OLLAMA_BASE_URLS", "")

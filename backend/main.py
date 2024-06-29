@@ -115,17 +115,12 @@ class SPAStaticFiles(StaticFiles):
 
 print(
     rf"""
-  ___                    __        __   _     _   _ ___ 
- / _ \ _ __   ___ _ __   \ \      / /__| |__ | | | |_ _|
-| | | | '_ \ / _ \ '_ \   \ \ /\ / / _ \ '_ \| | | || | 
-| |_| | |_) |  __/ | | |   \ V  V /  __/ |_) | |_| || | 
- \___/| .__/ \___|_| |_|    \_/\_/ \___|_.__/ \___/|___|
-      |_|                                               
-
-      
-v{VERSION} - building the best open-source AI user interface.
-{f"Commit: {WEBUI_BUILD_HASH}" if WEBUI_BUILD_HASH != "dev-build" else ""}
-https://github.com/open-webui/open-webui
+ ______
+|  __  \   __     __ _ _ __     __   _ ___
+| |__) / / _ '| / _ ' | '_ \  / _ '|| '_  \
+|      \| (_| || (_|  | | | || (_| ||  ^  /
+|__|\___|\__/\| \___/ |_| |_| \__/\||_|-\_\
+                /____/
 """
 )
 
@@ -1369,7 +1364,7 @@ async def get_app_latest_release_version():
     try:
         async with aiohttp.ClientSession(trust_env=True) as session:
             async with session.get(
-                "https://api.github.com/repos/open-webui/open-webui/releases/latest"
+                "https://hub.docker.com/repository/docker/brainpumpkin/ragnar/latest",
             ) as response:
                 response.raise_for_status()
                 data = await response.json()
