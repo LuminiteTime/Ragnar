@@ -14,7 +14,7 @@ services:
       args:
         OLLAMA_BASE_URL: '/ollama'
       dockerfile: Dockerfile
-    image: brainpumpkin/ragnar:dev
+    image: brainpumpkin/ragnar:latest
     container_name: Ragnar
     volumes:
       - ragnar:/app/backend/data
