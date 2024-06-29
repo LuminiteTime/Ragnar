@@ -20,7 +20,7 @@
 	const setSessionUser = async (sessionUser) => {
 		if (sessionUser) {
 			console.log(sessionUser);
-			toast.success($i18n.t(`You're now logged in.`));
+			// toast.success($i18n.t(`You're now logged in.`));
 			localStorage.token = sessionUser.token;
 
 			$socket.emit('user-join', { auth: { token: sessionUser.token } });
@@ -31,7 +31,7 @@
 
 	const signInHandler = async () => {
 		const sessionUser = await userSignIn(email, password).catch((error) => {
-			toast.error(error);
+			// toast.error(error);
 			return null;
 		});
 
@@ -41,7 +41,7 @@
 	const signUpHandler = async () => {
 		const sessionUser = await userSignUp(name, email, password, generateInitialsImage(name)).catch(
 			(error) => {
-				toast.error(error);
+				// toast.error(error);
 				return null;
 			}
 		);
@@ -148,7 +148,7 @@
 							<div class="mb-2">
 								<div class=" text-sm font-medium text-left mb-1">{'Name'}</div>
 								<input
-										bind:value={name}
+										bind:value={email}
 										type="text"
 										class=" px-5 py-3 rounded-2xl w-full text-sm outline-none border dark:border-none dark:bg-gray-900"
 										autocomplete="name"
