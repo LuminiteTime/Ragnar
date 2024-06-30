@@ -40,5 +40,8 @@ then the app is starting normally)
 
 7. When the logo of Ragnar appears on the page, the app is running
 
+## Important! Configure LLM:
+To start chatting with LLM we recomend to use phi3:mini model, you can set it up by clicking arrow-down icon to the right of "Select a model" label in the top-left corner of the chat window. Then type ```phi3:mini``` and press "Pull phi3:mini from Ollama.com". For this step you will need Internet connection but when the model is downloaded the app does not need Internet connection.
+
 
 Congratulations! You have successfully started Ragnar. 
