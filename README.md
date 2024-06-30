@@ -2,45 +2,42 @@
 
 Welcome to Ragnar v.0! This guide will walk you through cloning the repository and starting the application using Docker.
 
-## Ollama installation (manual for now)
+### **Features**:
+- Bind Ollama so it is not needed to be downloaded separately
+- Removed authentication with safety about all dependencies
+- Changed logo and name
+- Removed unnecessary functionality and options from "Settings"
+- Removed admin and users system since the app is used locally
 
-First, you need to install Ollama. Visit the [Ollama download page](https://ollama.com/download) to get the latest version of the Ollama library. Follow the installation instructions for your operating system. Then run the app (no interface will appear).
+### **Fixed**:
+- Build using Docker is now stable
 
-## Cloning the Repository
+## How to easily run:
 
-Then, you need to clone the Ragnar repository to your local machine. You can do this using either HTTPS or SSH. Choose the method that suits you best:
+1. Unzip release files
+2. Ensure you have Docker installed and running on your machine
+3. Open terminal
+4. In terminal type:
 
-- **HTTPS:**
+    4.1.
+    ```sh
+    cd <path-to-release-folder>
+    ```
+    4.2.
+    ```sh
+    docker compose up -d
+    ```
+5. Go to http://localhost:3000
+6. Wait a little bit, it may take some time to start the app (Around 5 minutes, you can track the progress in Ragnar container in docker, if there are lines 
 
-```sh
-git clone https://gitlab.pg.innopolis.university/m.trifonov/ragnar.git
-```
+" Loading WEBUI_SECRET_KEY from file, not provided as an environment variable.
 
-- **SSH:**
-```sh
-git clone git@gitlab.pg.innopolis.university:m.trifonov/ragnar.git
-```
+Generating WEBUI_SECRET_KEY
 
-After cloning, navigate into the project directory:
-```sh
-cd ragnar
-```
+Loading WEBUI_SECRET_KEY from .webui_secret_key "
 
-## Starting the Application
-Ensure you have Docker installed and running on your machine.
+then the app is starting normally)
+7. When the logo of Ragnar appears on the page, the app is running
 
-To start the application, run the following command in the terminal:
-```sh
-docker compose up -d
-```
 
-This command will start the application in detached mode, allowing you to continue using the terminal. The application will be running in Docker, and you can start using the application.
-
-Congratulations! You have successfully cloned and started Ragnar. 
-
-## Start the work
-
-- When docker compose is done, go to "http://localhost:3000"
-- It is possible that you will need to wait some time before the home page appears
-- Click "Sign up", enter any name, email, and password you want, then press "Create Account".
-- To start the chat with LLM you have to click "Selecta model" in the top-left corner of the chat window, then click arrow-down button and write "phi3:mini". Then press "Pull phi3:mini from Ollama.com" and wait until LLM is downloaded (you will need Internet connection for it). When LLM has been downloaded, you can start chatting with it (Internet connection is not needed).
+Congratulations! You have successfully started Ragnar. 
