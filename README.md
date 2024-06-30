@@ -37,6 +37,7 @@ Generating WEBUI_SECRET_KEY
 Loading WEBUI_SECRET_KEY from .webui_secret_key "
 
 then the app is starting normally)
+
 7. When the logo of Ragnar appears on the page, the app is running
 
 
