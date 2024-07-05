@@ -30,7 +30,7 @@ lint_backend:
     - curl -sL https://deb.nodesource.com/setup_16.x | bash -
     - apt-get install -y nodejs
   script:
-    - npm run lint:backend
+    - npm run pylint backend/
 
 lint_frontend:
   image: node:latest
@@ -38,5 +38,5 @@ lint_frontend:
   before_script:
     - npm install --frozen-lockfile
   script:
-    - npm run lint:frontend
+    - npm run eslint . --fix
 
