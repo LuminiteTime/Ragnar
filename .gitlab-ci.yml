@@ -34,7 +34,7 @@ lint_backend:
   artifacts:
     when: always
     paths:
-      - ci_reports/backend_reports/
+      - /var/opt/gitlab/gitlab-rails/shared/artifacts
 
 lint_frontend:
   image: node:latest
@@ -46,5 +46,5 @@ lint_frontend:
   artifacts:
     when: always
     paths:
-      - ci_reports/frontend_reports/
+      - /var/opt/gitlab/gitlab-rails/shared/artifacts
 
