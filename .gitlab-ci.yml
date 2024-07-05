@@ -1,4 +1,7 @@
-image: Ragnar:latest
+# image: Ragnar:latest
+
+# TODO: ERROR: Job failed: failed to pull image "Ragnar:latest" with specified policies [always]: 
+# invalid reference format: repository name must be lowercase
 
 # services:
 #   - docker:dind
