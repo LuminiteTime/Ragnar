@@ -24,7 +24,8 @@ lint_backend:
   image: python:latest
   stage: lint
   before_script:
-    - pip install --upgrade pip
+    - PIP_VERSION=$(pip --version | cut -d' ' -f2)
+    - if [[ "$PIP_VERSION" < "24.0" ]]; then pip install --upgrade pip; fi
     - pip install pylint
   script:
     - npm run lint:backend
