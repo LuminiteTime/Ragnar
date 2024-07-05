@@ -27,5 +27,7 @@ lint_backend:
     - PIP_VERSION=$(pip --version | cut -d' ' -f2)
     - if [[ "$PIP_VERSION" < "24.0" ]]; then pip install --upgrade pip; fi
     - pip install pylint
+    - curl -sL https://deb.nodesource.com/setup_16.x | bash -
+    - apt-get install -y nodejs
   script:
     - npm run lint:backend
