@@ -13,7 +13,7 @@ stages:
   - build
 
 build:
-  stage: build
+  # stage: build
   script:
       - echo "Placeholder"
 #     - docker build -t $CI_REGISTRY_IMAGE:latest .
