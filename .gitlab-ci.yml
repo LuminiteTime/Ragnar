@@ -11,7 +11,7 @@
 
 stages:
   - echo_stage
-  - lint_backend
+  - lint
 
 echo_job:
   stage: echo_stage
