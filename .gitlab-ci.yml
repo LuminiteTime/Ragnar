@@ -28,6 +28,3 @@ lint_backend:
     - pip install pylint
   script:
     - npm run lint:backend
-  only:
-    - main
-
