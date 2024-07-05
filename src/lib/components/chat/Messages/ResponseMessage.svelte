@@ -338,6 +338,9 @@
 		renderStyling();
 	};
 
+	const saveMessageAsNote = async () => {
+	};
+
 	const generateImage = async (message) => {
 		generatingImage = true;
 		const res = await imageGenerations(localStorage.token, message.content).catch((error) => {
@@ -465,6 +468,9 @@
 								<div>
 									<button
 											class="px-4 py-2 bg-gray-900 hover:bg-gray-850 text-gray-100 transition rounded-3xl"
+											on:click={() => {
+										saveMessageAsNote();
+									}}
 									>
 										{'Save as note'}
 									</button>
