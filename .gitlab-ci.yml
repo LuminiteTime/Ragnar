@@ -33,6 +33,7 @@ lint_backend:
     - npm run lint:backend # We decided to use tools for linting for Ragnar the same as used for Open-WebUI, thus
                             # configuration is taken from package.json of Open-WebU
   artifacts:
+    when: always
     paths:
       - backend-reports/
 
@@ -45,6 +46,7 @@ lint_frontend:
     - npm run lint:frontend # We decided to use tools for linting for Ragnar the same as used for Open-WebUI, thus
                             # configuration is taken from package.json of Open-WebU
   artifacts:
+    when: always
     paths:
       - frontend-reports/
 
