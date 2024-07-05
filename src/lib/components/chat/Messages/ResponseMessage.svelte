@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { WEBUI_API_BASE_URL } from '$lib/constants';
 	import { toast } from 'svelte-sonner';
 	import dayjs from 'dayjs';
 	import { marked } from 'marked';
@@ -339,6 +340,27 @@
 	};
 
 	const saveMessageAsNote = async () => {
+		try {
+			const response = await fetch( `${WEBUI_API_BASE_URL}/memories/save_response_as_note`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					content: editedContent,
+				}),
+			});
+
+			if (!response.ok) {
+				throw new Error('Failed to save note');
+			}
+
+			const data = await response.json();
+			console.log('Note saved:', data);
+			// handle success
+		} catch (error) {
+			console.error('Error saving note:', error.message);
+		}
 	};
 
 	const generateImage = async (message) => {
