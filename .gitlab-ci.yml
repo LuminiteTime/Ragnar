@@ -1,16 +1,13 @@
-image: ragnar:latest
+# image: ragnar:latest
 
-# TODO: ERROR: Job failed: failed to pull image "Ragnar:latest" with specified policies [always]: 
-# invalid reference format: repository name must be lowercase
+# services:
+  # - docker:dind
 
-services:
-  - docker:dind
+# variables:
+  # DOCKER_DRIVER: overlay2
 
-variables:
-  DOCKER_DRIVER: overlay2
-
-before_script:
-  - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+# before_script:
+  # - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
 
 stages:
   - echo_stage
