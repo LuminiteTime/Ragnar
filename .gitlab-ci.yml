@@ -1,4 +1,4 @@
-# image: Ragnar:latest
+image: ragnar:latest
 
 # TODO: ERROR: Job failed: failed to pull image "Ragnar:latest" with specified policies [always]: 
 # invalid reference format: repository name must be lowercase
