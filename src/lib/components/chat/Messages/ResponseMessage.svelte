@@ -461,27 +461,35 @@
 									e.target.style.height = `${e.target.scrollHeight}px`;
 								}}
 							/>
-
-							<div class=" mt-2 mb-1 flex justify-end space-x-1.5 text-sm font-medium">
-								<button
-									id="close-edit-message-button"
-									class="px-4 py-2 bg-white hover:bg-gray-100 text-gray-800 transition rounded-3xl"
-									on:click={() => {
+							<div class="mt-2 mb-1 flex justify-between space-x-1.5 text-sm font-medium">
+								<div>
+									<button
+											class="px-4 py-2 bg-gray-900 hover:bg-gray-850 text-gray-100 transition rounded-3xl"
+									>
+										{'Save as note'}
+									</button>
+								</div>
+								<div>
+									<button
+											id="close-edit-message-button"
+											class="px-4 py-2 bg-white hover:bg-gray-100 text-gray-800 transition rounded-3xl"
+											on:click={() => {
 										cancelEditMessage();
 									}}
-								>
-									{$i18n.t('Cancel')}
-								</button>
+									>
+										{'Cancel'}
+									</button>
 
-								<button
-									id="save-edit-message-button"
-									class=" px-4 py-2 bg-gray-900 hover:bg-gray-850 text-gray-100 transition rounded-3xl"
-									on:click={() => {
+									<button
+											id="save-edit-message-button"
+											class=" px-4 py-2 bg-gray-900 hover:bg-gray-850 text-gray-100 transition rounded-3xl"
+											on:click={() => {
 										editMessageConfirmHandler();
 									}}
-								>
-									{$i18n.t('Save')}
-								</button>
+									>
+										{'Save'}
+									</button>
+								</div>
 							</div>
 						</div>
 					{:else}
