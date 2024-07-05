@@ -30,7 +30,8 @@ lint_backend:
     - curl -sL https://deb.nodesource.com/setup_16.x | bash -
     - apt-get install -y nodejs
   script:
-    - npm run pylint backend/
+    - npm run lint:backend # We decided to use tools for linting for Ragnar the same as used for Open-WebUI, thus
+                            # configuration is taken from package.json of Open-WebU
 
 lint_frontend:
   image: node:latest
@@ -38,5 +39,6 @@ lint_frontend:
   before_script:
     - npm install --frozen-lockfile
   script:
-    - npm run eslint . --fix
+    - npm run lint:frontend # We decided to use tools for linting for Ragnar the same as used for Open-WebUI, thus
+                            # configuration is taken from package.json of Open-WebU
 
