@@ -129,14 +129,11 @@ async def update_ollama_api_url(form_data: UrlUpdateForm, user=Depends(get_admin
     return {"OLLAMA_BASE_URLS": app.state.config.OLLAMA_BASE_URLS}
 
 
-async def save_llm_response_as_markdown(llm_response_text: str):
-    # Ensure the upload directory exists
+async def save_llm_response_as_note(llm_response_text: str):
     os.makedirs(UPLOAD_DIR, exist_ok=True)
 
-    # Construct the full path for the new markdown file
     markdown_file_path = os.path.join(UPLOAD_DIR, f"{'_'.join(llm_response_text.split()[:5])}.md")
 
-    # Write the LLM response text to the markdown file
     with open(markdown_file_path, "w", encoding="utf-8") as markdown_file:
         markdown_file.write(llm_response_text)
 
