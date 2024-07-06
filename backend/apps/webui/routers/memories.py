@@ -14,6 +14,12 @@ from constants import ERROR_MESSAGES
 
 from config import SRC_LOG_LEVELS, CHROMA_CLIENT
 
+
+from fastapi import APIRouter
+
+from apps.webui.models.memories import Memories
+from utils.utils import get_verified_user
+
 log = logging.getLogger(__name__)
 log.setLevel(SRC_LOG_LEVELS["MODELS"])
 
@@ -60,6 +66,33 @@ async def add_memory(
     )
 
     return memory
+
+
+class SaveResponseAsNoteForm(BaseModel):
+    content: str
+
+
+@router.post("/save_response_as_note")
+async def save_response_as_note(
+        request: Request,
+        form_data: SaveResponseAsNoteForm,
+        user=Depends(get_verified_user)
+):
+    if not form_data.content:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Content is required to save a note."
+        )
+
+    note = Memories.insert_new_memory(user.id, form_data.content)
+
+    if note:
+        return {"message": "Note saved successfully", "note_id": note.id}
+    else:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to save the note."
+        )
 
 
 ############################
