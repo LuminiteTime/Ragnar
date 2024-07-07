@@ -129,6 +129,10 @@ async def update_ollama_api_url(form_data: UrlUpdateForm, user=Depends(get_admin
     return {"OLLAMA_BASE_URLS": app.state.config.OLLAMA_BASE_URLS}
 
 
+async def save_llm_response_as_note(llm_response_text: str):
+    ...
+
+
 async def fetch_url(url):
     timeout = aiohttp.ClientTimeout(total=5)
     try:
