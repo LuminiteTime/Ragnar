@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { WEBUI_API_BASE_URL } from '$lib/constants';
 	import { toast } from 'svelte-sonner';
 	import dayjs from 'dayjs';
 	import { marked } from 'marked';
@@ -338,6 +339,34 @@
 		renderStyling();
 	};
 
+	const saveMessageAsNote = async () => {
+		try {
+			const response = await fetch( `${WEBUI_API_BASE_URL}/memories/save_response_as_note`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+					content: editedContent,
+				}),
+			});
+
+			if (!response.ok) {
+				throw new Error('Failed to save note');
+			}
+
+			const data = await response.json();
+			console.log('Note saved:', data);
+			// handle success
+		} catch (error) {
+			console.error('Error saving note:', error.message);
+		}
+		edit = false;
+		editedContent = '';
+		await tick();
+		renderStyling();
+	};
+
 	const generateImage = async (message) => {
 		generatingImage = true;
 		const res = await imageGenerations(localStorage.token, message.content).catch((error) => {
@@ -461,27 +490,38 @@
 									e.target.style.height = `${e.target.scrollHeight}px`;
 								}}
 							/>
-
-							<div class=" mt-2 mb-1 flex justify-end space-x-1.5 text-sm font-medium">
-								<button
-									id="close-edit-message-button"
-									class="px-4 py-2 bg-white hover:bg-gray-100 text-gray-800 transition rounded-3xl"
-									on:click={() => {
+							<div class="mt-2 mb-1 flex justify-between space-x-1.5 text-sm font-medium">
+								<div>
+									<button
+											class="px-4 py-2 bg-gray-900 hover:bg-gray-850 text-gray-100 transition rounded-3xl"
+											on:click={() => {
+										saveMessageAsNote();
+									}}
+									>
+										{'Save as note'}
+									</button>
+								</div>
+								<div>
+									<button
+											id="close-edit-message-button"
+											class="px-4 py-2 bg-white hover:bg-gray-100 text-gray-800 transition rounded-3xl"
+											on:click={() => {
 										cancelEditMessage();
 									}}
-								>
-									{$i18n.t('Cancel')}
-								</button>
+									>
+										{'Cancel'}
+									</button>
 
-								<button
-									id="save-edit-message-button"
-									class=" px-4 py-2 bg-gray-900 hover:bg-gray-850 text-gray-100 transition rounded-3xl"
-									on:click={() => {
+									<button
+											id="save-edit-message-button"
+											class=" px-4 py-2 bg-gray-900 hover:bg-gray-850 text-gray-100 transition rounded-3xl"
+											on:click={() => {
 										editMessageConfirmHandler();
 									}}
-								>
-									{$i18n.t('Save')}
-								</button>
+									>
+										{'Save'}
+									</button>
+								</div>
 							</div>
 						</div>
 					{:else}
