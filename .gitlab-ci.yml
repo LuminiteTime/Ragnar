@@ -22,19 +22,19 @@ echo_job:
 #     - docker push $CI_REGISTRY_IMAGE:latest
 
 test_backend:
-  image: python:latest
+  image: python:3.11.4
   stage: test
   before_script:
     - PIP_VERSION=$(pip --version | cut -d' ' -f2)
     - if [[ "$PIP_VERSION" < "24.0" ]]; then pip install --upgrade pip; fi
-    # - pip install -r backend/requirements.txt
+    - pip install -r backend/requirements.txt
     - pip install unittest
     - pip install asyncio
   script:
     - python -m unittest test_backend.main
 
 lint_backend:
-  image: python:latest
+  image: python:3.11.4
   stage: lint
   before_script:
     - PIP_VERSION=$(pip --version | cut -d' ' -f2)
