@@ -18,3 +18,17 @@ class TestSaveLLMResponseAsNote(TestCase):
 
         # Assert
         self.assertTrue(os.path.exists(path))
+    
+    @mock.patch("backend.apps.ollama.main.save_llm_response_as_note")
+    def test_empty_or_whitespace_only_response_raises_exception(self):
+        # Setup
+        empty_or_whitespace_only_responses = ["", "   ", "\n\t\r"]
+
+        for response in empty_or_whitespace_only_responses:
+            with self.subTest(response=response):
+                # Act & Assert
+                with self.assertRaises(ValueError) as context:
+                    asyncio.run(save_llm_response_as_note(response))
+                
+                # Verify the exception message
+                self.assertEqual(str(context.exception), "Empty or whitespace-only response cannot be saved.")
