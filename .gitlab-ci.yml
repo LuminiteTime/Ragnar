@@ -12,6 +12,7 @@
 stages:
   - echo_stage
   - lint
+  - test
 
 echo_job:
   stage: echo_stage
@@ -40,3 +41,14 @@ lint_frontend:
   script:
     - npm run lint:frontend # We decided to use tools for linting for Ragnar the same as used for Open-WebUI, thus configuration is taken from package.json of Open-WebU
 
+test_backend:
+  image: python:latest
+  stage: test
+  before_script:
+    - PIP_VERSION=$(pip --version | cut -d' ' -f2)
+    - if [[ "$PIP_VERSION" < "24.0" ]]; then pip install --upgrade pip; fi
+    - pip install -r backend/requirements.txt
+    - pip install unittest
+    - pip install asyncio
+  script:
+    - pytest test_backend/main.py
