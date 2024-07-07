@@ -8,11 +8,18 @@ from pydantic import BaseModel
 import logging
 
 from apps.webui.models.memories import Memories, MemoryModel
+from apps.ollama.main import save_llm_response_as_note
 
 from utils.utils import get_verified_user
 from constants import ERROR_MESSAGES
 
 from config import SRC_LOG_LEVELS, CHROMA_CLIENT
+
+
+from fastapi import APIRouter
+
+from apps.webui.models.memories import Memories
+from utils.utils import get_verified_user
 
 log = logging.getLogger(__name__)
 log.setLevel(SRC_LOG_LEVELS["MODELS"])
@@ -60,6 +67,18 @@ async def add_memory(
     )
 
     return memory
+
+
+class SaveResponseAsNoteForm(BaseModel):
+    content: str
+
+
+@router.post("/save_response_as_note")
+async def save_response_as_note(
+        request: Request,
+        form_data: SaveResponseAsNoteForm,
+):
+    ...
 
 
 ############################
