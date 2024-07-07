@@ -20,7 +20,7 @@ import requests
 import shutil
 
 from secrets import token_bytes
-from .constants import ERROR_MESSAGES
+from constants import ERROR_MESSAGES
 
 ####################################
 # Load .env file
