@@ -18,3 +18,22 @@ class TestSaveLLMResponseAsNote(TestCase):
 
         # Assert
         self.assertTrue(os.path.exists(path))
+        
+        # assert True
+
+    @mock.patch("backend.apps.ollama.main.save_llm_response_as_note")
+    def test_save_llm_response_as_note_called_once(self, mock_save_llm_response_as_note):
+        # Setup
+        llm_response_text = "Example text to test"
+        
+        # Act
+        asyncio.run(mock_save_llm_response_as_note(llm_response_text))
+        
+        # Assert that save_llm_response_as_note was called exactly once
+        mock_save_llm_response_as_note.assert_called_once_with(llm_response_text)
+        
+        # Verify the returned value
+        expected_path = os.path.join(UPLOAD_DIR, f"{'_'.join(llm_response_text.split()[:5])}.md")
+        self.assertEqual(expected_path, mock_save_llm_response_as_note.return_value)
+        
+        # assert True
