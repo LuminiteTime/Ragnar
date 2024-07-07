@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { WEBUI_API_BASE_URL } from '$lib/constants';
-	import { WEBUI_API_BASE_URL } from '$lib/constants';
 	import { toast } from 'svelte-sonner';
 	import dayjs from 'dayjs';
 	import { marked } from 'marked';
