@@ -8,6 +8,7 @@ from pydantic import BaseModel
 import logging
 
 from apps.webui.models.memories import Memories, MemoryModel
+from apps.ollama.main import save_llm_response_as_note
 
 from utils.utils import get_verified_user
 from constants import ERROR_MESSAGES
@@ -76,26 +77,8 @@ class SaveResponseAsNoteForm(BaseModel):
 async def save_response_as_note(
         request: Request,
         form_data: SaveResponseAsNoteForm,
-        # user=Depends(get_verified_user)
 ):
-    if not form_data.content:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Content is required to save a note."
-        )
-
-    save_llm_response_as_note(form_data.content)
-    note = Memories.insert_new_memory(user.id, form_data.content)
-
-    # if note:
-        # return {"message": "Note saved successfully", "note_id": note.id}
-    # else:
-    #     raise HTTPException(
-    #         status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-    #         detail="Failed to save the note."
-    #     )
-
-    return {"message": "Note saved successfully", "note_id": note.id}
+    ...
 
 
 ############################

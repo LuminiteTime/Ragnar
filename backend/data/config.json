@@ -53,18 +53,5 @@
 				"content": "Check the following sentence for grammar and clarity: \"[sentence]\". Rewrite it for better readability while maintaining its original meaning."
 			}
 		]
-	},
-	"ollama": {
-		"base_urls": [
-			"http://localhost:11434"
-		]
-	},
-	"openai": {
-		"api_base_urls": [
-			"https://openrouter.ai/api/v1"
-		],
-		"api_keys": [
-			"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"
-		]
 	}
 }
