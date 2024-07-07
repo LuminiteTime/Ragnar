@@ -11,8 +11,8 @@
 
 stages:
   - echo_stage
-  - lint
   - test
+  - lint
 
 echo_job:
   stage: echo_stage
