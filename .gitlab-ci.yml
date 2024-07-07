@@ -11,6 +11,7 @@
 
 stages:
   - echo_stage
+  - test
   - lint
 
 echo_job:
@@ -20,8 +21,20 @@ echo_job:
 #     - docker build -t $CI_REGISTRY_IMAGE:latest .
 #     - docker push $CI_REGISTRY_IMAGE:latest
 
+test_backend:
+  image: python:3.11.4
+  stage: test
+  before_script:
+    - PIP_VERSION=$(pip --version | cut -d' ' -f2)
+    - if [[ "$PIP_VERSION" < "24.0" ]]; then pip install --upgrade pip; fi
+    - pip install -r backend/requirements.txt
+    - pip install unittest
+    - pip install asyncio
+  script:
+    - python -m unittest test_backend.main
+
 lint_backend:
-  image: python:latest
+  image: python:3.11.4
   stage: lint
   before_script:
     - PIP_VERSION=$(pip --version | cut -d' ' -f2)
@@ -30,7 +43,7 @@ lint_backend:
     - curl -sL https://deb.nodesource.com/setup_16.x | bash -
     - apt-get install -y nodejs
   script:
-    - npm run lint:backend # We decided to use tools for linting for Ragnar the same as used for Open-WebUI, thus configuration is taken from package.json of Open-WebU
+    - npm run lint:backend # We decided to use tools for linting for Ragnar the same as used for Open-WebUI, thus configuration is taken from package.json of Open-WebU.
 
 lint_frontend:
   image: node:latest
@@ -38,5 +51,4 @@ lint_frontend:
   before_script:
     - npm install --frozen-lockfile
   script:
-    - npm run lint:frontend # We decided to use tools for linting for Ragnar the same as used for Open-WebUI, thus configuration is taken from package.json of Open-WebU
-
+    - npm run lint:frontend # We decided to use tools for linting for Ragnar the same as used for Open-WebUI, thus configuration is taken from package.json of Open-WebU.
