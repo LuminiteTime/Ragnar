@@ -130,7 +130,8 @@ async def update_ollama_api_url(form_data: UrlUpdateForm, user=Depends(get_admin
 
 
 async def save_llm_response_as_note(llm_response_text: str):
-    ...
+    return ""
+
 
 
 async def fetch_url(url):
