@@ -130,7 +130,17 @@ async def update_ollama_api_url(form_data: UrlUpdateForm, user=Depends(get_admin
 
 
 async def save_llm_response_as_note(llm_response_text: str):
-    ...
+    if llm_response_text.strip() == "":
+        raise ValueError("Empty or whitespace-only response cannot be saved.")
+
+    os.makedirs(UPLOAD_DIR, exist_ok=True)
+
+    markdown_file_path = os.path.join(UPLOAD_DIR, f"{'_'.join(llm_response_text.split()[:5])}.md")
+
+    with open(markdown_file_path, "w", encoding="utf-8") as markdown_file:
+        markdown_file.write(llm_response_text)
+    
+    return markdown_file_path
 
 
 async def fetch_url(url):

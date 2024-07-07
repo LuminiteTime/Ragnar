@@ -78,7 +78,23 @@ async def save_response_as_note(
         request: Request,
         form_data: SaveResponseAsNoteForm,
 ):
-    ...
+    if not form_data.content:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Content is required to save a note."
+        )
+    path = await save_llm_response_as_note(form_data.content)
+    user_id: str = "57d0beb6-7bf8-434a-babd-24c7a4088dca"
+    note = Memories.insert_new_memory(user_id, form_data.content)
+
+    if note:
+        return {"message": "Note saved successfully", "note_id": note.id, "note_path": path}
+    else:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to save the note."
+        )
+
 
 
 ############################
