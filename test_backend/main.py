@@ -36,7 +36,6 @@ class TestSaveLLMResponseAsNote(TestCase):
             return self.fail("File not found")
 
         self.assertEqual(content, llm_response_text)
-    
 
     def test_empty_or_whitespace_only_response_raises_exception(self):
         empty_or_whitespace_only_responses = ["", "   ", "\n\t\r"]
@@ -45,3 +44,18 @@ class TestSaveLLMResponseAsNote(TestCase):
                 with self.assertRaises(ValueError) as context:
                     asyncio.run(save_llm_response_as_note(response))
                 self.assertEqual(str(context.exception), "Empty or whitespace-only response cannot be saved.")
+    
+        
+    @mock.patch("backend.apps.ollama.main.save_llm_response_as_note")
+    def test_save_llm_response_with_special_characters(self, mock_save_llm_response_as_note):
+        special_chars_text = "!@#$%^&*()_+{}|:\"<>?"
+        path = asyncio.run(save_llm_response_as_note(special_chars_text))
+        print(path)
+        self.assertTrue(os.path.exists(path))
+
+    @mock.patch("backend.apps.ollama.main.save_llm_response_as_note")
+    def test_save_llm_response_with_non_ascii_characters(self, mock_save_llm_response_as_note):
+        non_ascii_text = "测试文本"
+        path = asyncio.run(save_llm_response_as_note(non_ascii_text))
+        print(path)
+        self.assertTrue(os.path.exists(path))
