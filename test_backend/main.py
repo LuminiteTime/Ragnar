@@ -36,5 +36,12 @@ class TestSaveLLMResponseAsNote(TestCase):
             return self.fail("File not found")
 
         self.assertEqual(content, llm_response_text)
-        
-        
+    
+
+    def test_empty_or_whitespace_only_response_raises_exception(self):
+        empty_or_whitespace_only_responses = ["", "   ", "\n\t\r"]
+        for response in empty_or_whitespace_only_responses:
+            with self.subTest(response=response):
+                with self.assertRaises(ValueError) as context:
+                    asyncio.run(save_llm_response_as_note(response))
+                self.assertEqual(str(context.exception), "Empty or whitespace-only response cannot be saved.")
