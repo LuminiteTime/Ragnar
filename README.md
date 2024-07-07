@@ -1,6 +1,6 @@
 # Ragnar Setup Guide
 
-Welcome to Ragnar v.0! This guide will walk you through cloning the repository and starting the application using Docker.
+Welcome to Ragnar MVP-v2! This guide will walk you through cloning the repository and starting the application using Docker.
 
 ### **Features**:
 - Bind Ollama so it is not needed to be downloaded separately
@@ -27,7 +27,7 @@ Welcome to Ragnar v.0! This guide will walk you through cloning the repository a
     ```sh
     docker compose up -d
     ```
-5. Go to http://localhost:3000
+5. Go to http://localhost:5173 
 6. Wait a little bit, it may take some time to start the app (Around 5 minutes, you can track the progress in Ragnar container in docker, if there are lines 
 
 " Loading WEBUI_SECRET_KEY from file, not provided as an environment variable.
