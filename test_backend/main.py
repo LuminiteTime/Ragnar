@@ -26,10 +26,7 @@ class TestSaveLLMResponseAsNote(TestCase):
 
     @mock.patch("backend.apps.ollama.main.save_llm_response_as_note")    
     def test_for_notes_content(self, mock_save_llm_response_as_note):
-        # Setup
         llm_response_text = "Text of LLM response for unit testing"
-        
-        # Act
         path = asyncio.run(save_llm_response_as_note(llm_response_text))
          
         try:
@@ -37,8 +34,7 @@ class TestSaveLLMResponseAsNote(TestCase):
                 content = file.read()
         except FileNotFoundError:
             return self.fail("File not found")
-        
-        # Asser
+
         self.assertEqual(content, llm_response_text)
         
         
