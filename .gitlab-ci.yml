@@ -51,4 +51,4 @@ test_backend:
     - pip install unittest
     - pip install asyncio
   script:
-    - pytest test_backend/main.py
+    - python -m unittest test_backend.main
