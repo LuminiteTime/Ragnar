@@ -31,6 +31,9 @@
                 <li> <a href="#important-configure-llm">Important configure LLM</a> </li>
             </ul>
         </li>
+        <li>
+            <a href="#contacts">Contacts</a>
+        </li>
     </ol>
 </details>
 
@@ -134,8 +137,20 @@ Congratulations! You have successfully started Ragnar.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+# Contacts
+
+Mikhail Trifonov – Backend Developer: [GitLab](https://gitlab.pg.innopolis.university/m.trifonov), [Email](m.trifonov@innopolis.university) \
+Artyom Grishin – ML-engineer: [GitLab](https://gitlab.pg.innopolis.university/ar.grishin), [Email](ar.grishin@innopolis.university) \
+Savva Ponomarev – DevOps-engineer: [GitLab](https://gitlab.pg.innopolis.university/s.ponomarev), [Email](s.ponomarev@innopolis.university) \
+Ilsaf Abdulkhakov – Frontend Web Developer, UX/UI Designer: [GitLab](https://gitlab.pg.innopolis.university/i.abdulkhakov), [Email](i.abdulkhakov@innopolis.university) \
+Azalia Alisheva – Backend Developer: [GitLab](https://gitlab.pg.innopolis.university/a.alisheva), [Email](a.alisheva@innopolis.university)
 
 
+
+
+Project Link: [Ragnar](https://gitlab.pg.innopolis.university/m.trifonov/ragnar/-/tree/main?ref_type=heads)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
@@ -168,5 +183,3 @@ Congratulations! You have successfully started Ragnar.
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
 [product-screenshot]: images/screenshot.png
-
-gitlab.pg.innopolis.university/m.trifonov/ragnar/-/issues
