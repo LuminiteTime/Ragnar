@@ -29,6 +29,12 @@
             <a href="#usage">Usage</a>
             <ul>
                 <li> <a href="#important-configure-llm">Important configure LLM</a> </li>
+                <li>
+                <a href="#upload-documents"> Upload Documents</a>
+                </li>
+                <li>
+                <a href="#chat-with-llm">Chat with LLM</a>
+                </li>
             </ul>
         </li>
         <li>
@@ -44,7 +50,7 @@
             <a href="#contacts">Contacts</a>
         </li>
         <li>
-            <a href="#acknowledgments"> Acknowledgments </a>
+            <a href="#project-link">Project link</a>
         </li>
     </ol>
 </details>
