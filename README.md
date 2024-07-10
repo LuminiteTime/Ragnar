@@ -35,6 +35,9 @@
                 <li>
                 <a href="#chat-with-llm">Chat with LLM</a>
                 </li>
+                <li>
+                    <a href="#work-with-responses"> Work with responses</a>
+                </li>
             </ul>
         </li>
         <li>
@@ -176,10 +179,21 @@ To start new chat with LLM press **button New Chat** at the top of left side bar
 **Choose Documents for work**\
 To choose documents with that you want to work write in input line **#** and in opened list, choose **all** if you want to work wth all Documents or specify document to work with 
 
-### Edit Responses 
+### Work with Responses 
 
-**How to save as note**
+**How to edit response**
 
+To edit LLM's response you need to:
+1. Find **button pencil** at the bottom of the response and press it.
+2. After pressing you wil enter to the edit mode where you can add or remove some text.
+3. After all changes press **Save** if you want to save changes and **Cancel** if you do not want to edit note.
+
+**How to save response as note**
+
+To save LLM's response as note you need to:
+1. Find **button pencil** at the bottom of the response and press it.
+2. After pressing you wil enter to the edit mode where you can add or remove some text.
+3. After all changes press **Save as note** if you want to save response as note.
 
 
 Congratulations! You have successfully started Ragnar. 
