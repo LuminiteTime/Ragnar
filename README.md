@@ -142,7 +142,38 @@ then the app is starting normally)
 # Usage
 
 ### Important! Configure LLM:
-To start chatting with LLM we recomend to use phi3:mini model, you can set it up by clicking arrow-down icon to the right of "Select a model" label in the top-left corner of the chat window. Then type ```phi3:mini``` and press "Pull phi3:mini from Ollama.com". For this step you will need Internet connection but when the model is downloaded the app does not need Internet connection.
+To start chatting with LLM we recomend to use phi3:mini model, you can set it up by clicking arrow-down icon to the right of "Select a model" label in the top-left corner of the chat window. Then if did not download LLM earlier type ```phi3:mini``` and press "Pull phi3:mini from Ollama.com". For this step you will need Internet connection but when the model is downloaded the app does not need Internet connection.
+
+### Upload Documents 
+
+There are 3 variants how to upload doceuments to the chat:
+1. Drag and drop document to the chat.
+2. Press at the **plus** button and the left corner of input line.
+3. Put it in **Workspace**.
+   1. At the left side pannel find chapter Workspace and move to it.
+   2. In opened window at the top find chapter Document. 
+   3. At the right side of the chapter Document find **button plus** and press it.
+   4. In opened window click at the button **Click here to select documents.**
+   5. Select Document in your files.
+
+**Where to find documents**
+
+Documents are store in **Workspace** 
+1. At the left side pannel find chapter Workspace and move to it.
+2. In opened window at the top find chapter Document.
+
+### Chat with LLM
+
+**Add new chat** \
+To start new chat with LLM press **button New Chat** at the top of left side bar. 
+
+**Choose Documents for work**\
+To choose documents with that you want to work write in input line **#** and in opened list, choose **all** if you want to work wth all Documents or specify document to work with 
+
+### Edit Responses 
+
+**How to save as note**
+
 
 
 Congratulations! You have successfully started Ragnar. 
@@ -172,13 +203,13 @@ Azalia Alisheva – Backend Developer: [GitLab](https://gitlab.pg.innopolis.univ
 
 
 
-Project Link: [Ragnar](https://gitlab.pg.innopolis.university/m.trifonov/ragnar/-/tree/main?ref_type=heads)
+# Project Link: 
+
+[**Ragnar**](https://gitlab.pg.innopolis.university/m.trifonov/ragnar/-/tree/main?ref_type=heads) \
+[**Docker**](https://hub.docker.com/repository/docker/brainpumpkin/ragnar/general)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-# Acknowledgments
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
