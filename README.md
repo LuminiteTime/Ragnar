@@ -32,7 +32,19 @@
             </ul>
         </li>
         <li>
+            <a href="#roadmap"> Roadmap </a>
+        </li>
+        <li> 
+            <a href="#contributing">Contributing</a>
+        </li>
+        <li>
+            <a href="#license">License</a>
+        </li>
+        <li>
             <a href="#contacts">Contacts</a>
+        </li>
+        <li>
+            <a href="#acknowledgments"> Acknowledgments </a>
         </li>
     </ol>
 </details>
@@ -45,21 +57,21 @@
 <!-- [![Issues][issues-shield]][issues-url] -->
 <!-- [![MIT License][license-shield]][license-url] -->
 
-Project Ragnar is an innovative open-source tool designed to address the growing need for efficient and accurate document summarization and information retrieval. In an era where information overload is a common challenge, Ragnar stands out by providing users with concise summaries of documents and enabling them to query large language models (LLMs) about the content, ensuring responses are grounded solely in the uploaded documents. This unique feature mitigates the risk of hallucinations, a common issue with LLMs that generate responses not based on the provided data.
+Ragnar is an innovative open source tool that will help the user clearly understand a bunch of documentation in a couple of minutes. In an era where people need to absorb more and more information in a tight time frame, information overload is becoming a common problem. Ragnar helps reduce the time of searching and understanding information in documents by creating short and clear descriptions of each of them, separating the water from the essence and providing the opportunity to ask the user about this or that information and receive an answer based only on the information in the documents. This function allows you to use the LLM to obtain exactly the information contained in the documents without thinking through the AI.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Features
 
 1.	**Document Summarization:** \
-At the heart of Project Ragnar is its ability to generate brief, coherent summaries of documents. This feature is particularly beneficial for users dealing with extensive texts, allowing them to quickly grasp the main points without wading through pages of content. By employing advanced natural language processing (NLP) techniques, Ragnar extracts key information and presents it in a digestible format, saving time and enhancing productivity.
+Ragnar's main function is to generate short and clear paraphrases of documents. This function is useful for users who work with a large amount of various information or documentation. Ragnar will help such users highlight the main meaning in each document, skipping all unnecessary information, and present it in a user-friendly format.
 
 2.	**Accurate Information Retrieval:** \
-Unlike conventional LLMs that can produce responses based on a mix of learned data and the current input, Ragnar ensures that all responses are derived strictly from the uploaded documents. This is achieved by restricting the model’s access to external data sources, thereby eliminating the potential for misinformation or fabricated answers. Users can confidently query the content, knowing that the answers provided are accurate reflections of the original documents.
+Unlike conventional LLMs, which provide answers using previously acquired knowledge, Ragnar guarantees that all answers are obtained strictly from the documents uploaded into it. This is achieved due to the restrictions introduced into the model and pre-written prompts. The user can confidently ask Ragnar questions about the documents, knowing that he will rely only on the information in the documents.
 3.	**Open-Source Accessibility:** \
-As an open-source project, Ragnar invites collaboration and innovation from the global developer community. This openness not only fosters a collaborative environment for continuous improvement but also ensures transparency and trust in the tool’s functionality. Users and developers alike can contribute to and benefit from the collective expertise of the community, enhancing the tool’s capabilities and reliability.
+Since Ragnar is an open source project, we welcome collaboration and innovative ideas. Such openness of the application contributes to its greater development and continuous improvement, and it also increases confidence in the functionality of the project. Both users and developers can propose and contribute their ideas for improvement, thereby expanding the functionality of the project.
 4.	**User-Friendly Interface:** \
-Project Ragnar is designed with user experience in mind. Its intuitive interface allows users to easily upload documents, request summaries, and ask questions. The straightforward design ensures that even those with limited technical expertise can utilize the tool effectively, democratizing access to advanced document processing capabilities.
+Ragnar is designed to be simple and straightforward to use. Its user-friendly interface allows the user to easily download documents and ask questions about them. The simple design makes the application accessible to all users.
 
 ## Build with
 
@@ -70,7 +82,7 @@ Project Ragnar is designed with user experience in mind. Its intuitive interface
 [![Css][Css]][Css-url]
 [![Docker][Docker]][Docker-url]
 
-# Ragnar Setup Guide
+# Getting Started
 
 Welcome to Ragnar MVP-v2! This guide will walk you through cloning the repository and starting the application using Docker.
 
@@ -127,7 +139,7 @@ then the app is starting normally)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Usage
+# Usage
 
 ### Important! Configure LLM:
 To start chatting with LLM we recomend to use phi3:mini model, you can set it up by clicking arrow-down icon to the right of "Select a model" label in the top-left corner of the chat window. Then type ```phi3:mini``` and press "Pull phi3:mini from Ollama.com". For this step you will need Internet connection but when the model is downloaded the app does not need Internet connection.
@@ -137,18 +149,34 @@ Congratulations! You have successfully started Ragnar.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+# Roadmap
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+# Contributing
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+# License
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 # Contacts
 
-Mikhail Trifonov – Backend Developer: [GitLab](https://gitlab.pg.innopolis.university/m.trifonov), [Email](m.trifonov@innopolis.university) \
-Artyom Grishin – ML-engineer: [GitLab](https://gitlab.pg.innopolis.university/ar.grishin), [Email](ar.grishin@innopolis.university) \
-Savva Ponomarev – DevOps-engineer: [GitLab](https://gitlab.pg.innopolis.university/s.ponomarev), [Email](s.ponomarev@innopolis.university) \
-Ilsaf Abdulkhakov – Frontend Web Developer, UX/UI Designer: [GitLab](https://gitlab.pg.innopolis.university/i.abdulkhakov), [Email](i.abdulkhakov@innopolis.university) \
-Azalia Alisheva – Backend Developer: [GitLab](https://gitlab.pg.innopolis.university/a.alisheva), [Email](a.alisheva@innopolis.university)
+Mikhail Trifonov – Backend Developer: [GitLab](https://gitlab.pg.innopolis.university/m.trifonov)\
+Artyom Grishin – ML-engineer: [GitLab](https://gitlab.pg.innopolis.university/ar.grishin)\
+Savva Ponomarev – DevOps-engineer: [GitLab](https://gitlab.pg.innopolis.university/s.ponomarev)\
+Ilsaf Abdulkhakov – Frontend Web Developer, UX/UI Designer: [GitLab](https://gitlab.pg.innopolis.university/i.abdulkhakov)\
+Azalia Alisheva – Backend Developer: [GitLab](https://gitlab.pg.innopolis.university/a.alisheva)
 
 
 
 
 Project Link: [Ragnar](https://gitlab.pg.innopolis.university/m.trifonov/ragnar/-/tree/main?ref_type=heads)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+# Acknowledgments
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
