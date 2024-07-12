@@ -20,13 +20,9 @@
             <li> <a href="#features">Features</a> </li>
             <li> <a href="#build-with">Build with</a> </li>
         </ul>
-        <li> <a href="#ragnar-setup-guide">Ragnar Setup Guide </a></li>
-        <ul>
-            <li> <a href="#how-to-easily-run">How to easily run</a> </li>
-            <li> <a href="#important-configure-llm"> Important configure llm</a></li>
-        </ul>
+        <li> <a href="#installation-guide">Installation Guide</a> </li>
         <li>
-            <a href="#usage">Usage</a>
+            <a href="#usage-instructions">Usage Instructions</a>
             <ul>
                 <li> <a href="#important-configure-llm">Important configure LLM</a> </li>
                 <li>
@@ -39,9 +35,6 @@
                     <a href="#work-with-responses"> Work with responses</a>
                 </li>
             </ul>
-        </li>
-        <li>
-            <a href="#roadmap"> Roadmap </a>
         </li>
         <li> 
             <a href="#contributing">Contributing</a>
@@ -70,7 +63,7 @@ Ragnar is an innovative open source tool that will help the user clearly underst
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Features
+## Features with Demo
 
 1.	**Document Summarization:** \
 Ragnar's main function is to generate short and clear paraphrases of documents. This function is useful for users who work with a large amount of various information or documentation. Ragnar will help such users highlight the main meaning in each document, skipping all unnecessary information, and present it in a user-friendly format.
@@ -91,13 +84,9 @@ Ragnar is designed to be simple and straightforward to use. Its user-friendly in
 [![Css][Css]][Css-url]
 [![Docker][Docker]][Docker-url]
 
-# Getting Started
+# Installation Guide
 
 Welcome to Ragnar MVP-v2! This guide will walk you through cloning the repository and starting the application using Docker.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## How to easily run:
 
 ### Without Olama app
 
@@ -148,7 +137,7 @@ then the app is starting normally)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-# Usage
+# Usage Instructions
 
 ### Important! Configure LLM:
 To start chatting with LLM we recomend to use phi3:mini model, you can set it up by clicking arrow-down icon to the right of "Select a model" label in the top-left corner of the chat window. Then if did not download LLM earlier type ```phi3:mini``` and press "Pull phi3:mini from Ollama.com". For this step you will need Internet connection but when the model is downloaded the app does not need Internet connection.
@@ -200,21 +189,21 @@ Congratulations! You have successfully started Ragnar.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-# Roadmap
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 # Contributing
+
+Please refer to CONTRIBUTING.md when suggesting improvements and features for Ragnar.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 # License
 
+This project is licensed under the MIT License.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 # Contacts
 
-Mikhail Trifonov – Backend Developer: [GitLab](https://gitlab.pg.innopolis.university/m.trifonov)\
+Mikhail Trifonov – Team Lead, Backend Developer: [GitLab](https://gitlab.pg.innopolis.university/m.trifonov)\
 Artyom Grishin – ML-engineer: [GitLab](https://gitlab.pg.innopolis.university/ar.grishin)\
 Savva Ponomarev – DevOps-engineer: [GitLab](https://gitlab.pg.innopolis.university/s.ponomarev)\
 Ilsaf Abdulkhakov – Frontend Web Developer, UX/UI Designer: [GitLab](https://gitlab.pg.innopolis.university/i.abdulkhakov)\
@@ -223,10 +212,10 @@ Azalia Alisheva – Backend Developer: [GitLab](https://gitlab.pg.innopolis.univ
 
 
 
-# Project Link: 
+# Deployed Version of Ragnar: 
 
-[**Ragnar**](https://gitlab.pg.innopolis.university/m.trifonov/ragnar/-/tree/main?ref_type=heads) \
-[**Docker**](https://hub.docker.com/repository/docker/brainpumpkin/ragnar/general)
+[**Ragnar on GitLab**](https://gitlab.pg.innopolis.university/m.trifonov/ragnar/-/tree/main?ref_type=heads) \
+[**Ragnar on DockerHub**](https://hub.docker.com/repository/docker/brainpumpkin/ragnar/general)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
