@@ -5,7 +5,9 @@
 <div>
     <div align="center">
         <p>
-            <img src="image/logo.png" alt="logo">
+            <p align="center">
+                <img src="https://gitlab.pg.innopolis.university/m.trifonov/ragnar-gifs/-/raw/main/logo.png" alt="Ragnar Logo"/>
+            </p>
             <h1>Ragnar</h1>
             An open source solution for conducting research and managing  notes with the help of RAG models
         </p>
