@@ -18,6 +18,8 @@ from config import SRC_LOG_LEVELS, CHROMA_CLIENT
 
 from fastapi import APIRouter
 
+from apps.rag.main import scan_docs_dir
+
 from apps.webui.models.memories import Memories
 from utils.utils import get_verified_user
 
@@ -84,16 +86,17 @@ async def save_response_as_note(
             detail="Content is required to save a note."
         )
     path = await save_llm_response_as_note(form_data.content)
-    user_id: str = "57d0beb6-7bf8-434a-babd-24c7a4088dca"
-    note = Memories.insert_new_memory(user_id, form_data.content)
+    #user_id: str = "57d0beb6-7bf8-434a-babd-24c7a4088dca"
+    scan_docs_dir()
+    # note = Memories.insert_new_memory(user_id, form_data.content)
 
-    if note:
-        return {"message": "Note saved successfully", "note_id": note.id, "note_path": path}
-    else:
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Failed to save the note."
-        )
+    # if note:
+    #     return {"message": "Note saved successfully", "note_id": note.id, "note_path": path}
+    # else:
+    #     raise HTTPException(
+    #         status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+    #         detail="Failed to save the note."
+    #     )
 
 
 
