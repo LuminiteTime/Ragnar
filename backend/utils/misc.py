@@ -85,13 +85,25 @@ def validate_email_format(email: str) -> bool:
 
     return bool(re.match(r"[^@]+@[^@]+\.[^@]+", email))
 
+def transliterate_cyrillic_to_latin(text):
+    # Mapping of Cyrillic to Latin characters
+    cyrillic_to_latin_map = {
+        'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'yo',
+        'ж': 'zh', 'з': 'z', 'и': 'i', 'й': 'y', 'к': 'k', 'л': 'l', 'м': 'm',
+        'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r', 'с': 's', 'т': 't', 'у': 'u',
+        'ф': 'f', 'х': 'h', 'ц': 'ts', 'ч': 'ch', 'ш': 'sh', 'щ': 'sch', 'ъ': '',
+        'ы': 'y', 'ь': '', 'э': 'e', 'ю': 'yu', 'я': 'ya'
+    }
+    return ''.join(cyrillic_to_latin_map.get(char, char) for char in text)
 
 def sanitize_filename(file_name):
-    # Convert to lowercase
+
     lower_case_file_name = file_name.lower()
+    
+    transliterated_name = transliterate_cyrillic_to_latin(lower_case_file_name)
 
     # Remove special characters using regular expression
-    sanitized_file_name = re.sub(r"[^\w\s]", "", lower_case_file_name)
+    sanitized_file_name = re.sub(r"[^\w\s]", "", transliterated_name)
 
     # Replace spaces with dashes
     final_file_name = re.sub(r"\s+", "-", sanitized_file_name)
