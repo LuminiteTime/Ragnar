@@ -247,17 +247,29 @@ export const removeFirstHashWord = (inputString) => {
 	return resultString;
 };
 
-export const transformFileName = (fileName) => {
-	// Convert to lowercase
-	const lowerCaseFileName = fileName.toLowerCase();
+export const transformFileName = (fileName: string): string => {
+    // Mapping of Cyrillic to Latin characters
+    const cyrillicToLatinMap: { [key: string]: string } = {
+        'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'e', 'ж': 'zh',
+        'з': 'z', 'и': 'i', 'й': 'y', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n', 'о': 'o',
+        'п': 'p', 'р': 'r', 'с': 's', 'т': 't', 'у': 'u', 'ф': 'f', 'х': 'h', 'ц': 'ts',
+        'ч': 'ch', 'ш': 'sh', 'щ': 'sch', 'ъ': '', 'ы': 'y', 'ь': '', 'э': 'e', 'ю': 'yu',
+        'я': 'ya'
+    };
 
-	// Remove special characters using regular expression
-	const sanitizedFileName = lowerCaseFileName.replace(/[^\w\s]/g, '');
+    // Transliterate Cyrillic to Latin
+    let transliteratedFileName = '';
+    for (let i = 0; i < fileName.length; i++) {
+        transliteratedFileName += cyrillicToLatinMap[fileName[i].toLowerCase()] || fileName[i].toLowerCase();
+    }
 
-	// Replace spaces with dashes
-	const finalFileName = sanitizedFileName.replace(/\s+/g, '-');
+    // Remove special characters using regular expression
+    const sanitizedFileName = transliteratedFileName.replace(/[^\w\s]/g, '');
 
-	return finalFileName;
+    // Replace spaces with dashes
+    const finalFileName = sanitizedFileName.replace(/\s+/g, '-');
+
+    return finalFileName;
 };
 
 export const calculateSHA256 = async (file) => {

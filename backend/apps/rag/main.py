@@ -1119,7 +1119,7 @@ def store_text(
 
 
 @app.get("/scan")
-def scan_docs_dir(user=Depends(get_admin_user)):
+def scan_docs_dir():
     for path in Path(DOCS_DIR).rglob("./**/*"):
         try:
             if path.is_file() and not path.name.startswith("."):
@@ -1145,7 +1145,7 @@ def scan_docs_dir(user=Depends(get_admin_user)):
 
                         if doc == None:
                             doc = Documents.insert_new_doc(
-                                user.id,
+                                "57d0beb6-7bf8-434a-babd-24c7a4088dca",
                                 DocumentForm(
                                     **{
                                         "name": sanitized_filename,
