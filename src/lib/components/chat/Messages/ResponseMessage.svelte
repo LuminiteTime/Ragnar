@@ -496,6 +496,7 @@
 											class="px-4 py-2 bg-gray-900 hover:bg-gray-850 text-gray-100 transition rounded-3xl"
 											on:click={() => {
 										saveMessageAsNote();
+										editMessageConfirmHandler();
 									}}
 									>
 										{'Save as note'}
