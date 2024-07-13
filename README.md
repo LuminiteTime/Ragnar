@@ -123,7 +123,7 @@ Welcome to Ragnar MVP-v2! This guide will walk you through cloning the repositor
     ```sh
     docker compose up -d
     ```
-5. Go to http://localhost:5173 
+5. Go to http://localhost:3000 
 6. Wait a little bit, it may take some time to start the app (Around 5 minutes, you can track the progress in Ragnar container in docker, if there are lines 
 
 " Loading WEBUI_SECRET_KEY from file, not provided as an environment variable.
