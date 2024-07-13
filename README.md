@@ -48,7 +48,10 @@
             <a href="#contacts">Contacts</a>
         </li>
         <li>
-            <a href="#project-link">Project link</a>
+            <a href="#deployed-version-of-ragnar">Deployed Version of Ragnar</a>
+        </li>
+        <li>
+            <a href="#for-customer">For customer</a>
         </li>
     </ol>
 </details>
@@ -229,13 +232,22 @@ Azalia Alisheva – Backend Developer: [GitLab](https://gitlab.pg.innopolis.univ
 
 
 
-# Deployed Version of Ragnar: 
+# Deployed Version of Ragnar
 
 [**Ragnar on GitLab**](https://gitlab.pg.innopolis.university/m.trifonov/ragnar/-/tree/main?ref_type=heads) \
 [**Ragnar on DockerHub**](https://hub.docker.com/repository/docker/brainpumpkin/ragnar/general)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+# For customer
+
+We identified two project aspects relevant to our customer:
+
+1. The process of using the application should be simple, the number of steps to get started should be minimal. For example, the ability to select LLM is unnecessary, we can connect any of them at the code level and lock the selection.
+2. The LLM should give information on how to use the application if asked to do so. It should help the user orient themselves in the application.
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
