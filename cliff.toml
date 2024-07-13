@@ -60,6 +60,7 @@ commit_parsers = [
   { message = "(C|c)omment", skip = true },
   { message = "Attempt|Introduce", skip = true },
   { message = "->", skip = true },
+  { message = "placeholder for stage", skip = true },
   { message = "README|LICENSE|CONTRIBUTING|CHANGELOG|rules|structure", group = "<!-- 4 -->📚 Documentation" },
   { message = "Disable|Delete|Remove .", group = "<!-- 1 -->🙅‍♂️ Deprecated" },
   { message = "^(F|f)ix", group = "<!-- 2 -->🐛 Bug Fixes" },

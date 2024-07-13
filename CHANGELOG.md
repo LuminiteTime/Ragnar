@@ -2,19 +2,48 @@
 
 All notable changes to this project will be documented in this file.
 
-## [MVP-v3] - 2024-07-13
+## [unreleased]
+
+### 🚀 Features
+
+- Add Russian lang for files names
+
+
+### 🙅‍♂️ Deprecated
+
+- Remove Record-void and Call functionality
+
+
+### 🐛 Bug Fixes
+
+- Fix editing response after pressing "Save as note" button
+
+
+### 🚜 Refactor
+
+- Change app naming in specific files
+
+- Save responses to vector database and general database, changed directory for saving notes from /uploads to /docs
+
+- Change path of logo to remote repo
+
+
+### 📚 Documentation
+
+- Slightly improved README
+
+- Add GIFs for Demo in README
+
+- Change documentation link to Ragnar README
+
+- Add CHANGELOG
+
+
+## [Dev] - 2024-07-11
 
 ### 🚀 Features
 
 - Add lost image
-
-- Add placeholder for stage
-
-- Add placeholder for stage
-
-- Add placeholder for stage
-
-- Add placeholder for stage
 
 - Create "save as note" button in the edit window of the LLM response
 
@@ -23,6 +52,8 @@ All notable changes to this project will be documented in this file.
 - Add always option
 
 - Implement two functions for save-as-note feature
+
+- Add Contact information
 
 
 ### 🙅‍♂️ Deprecated
@@ -101,6 +132,8 @@ All notable changes to this project will be documented in this file.
 ### 📚 Documentation
 
 - Add procedure and code quality rules for code review
+
+- Add the Ragnar LICENSE in addition to the OpenWebUI LICENSE
 
 
 ### 🎨 Styling
