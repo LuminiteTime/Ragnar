@@ -62,7 +62,7 @@ commit_parsers = [
   { message = "->", skip = true },
   { message = "placeholder for stage", skip = true },
   { message = "README|LICENSE|CONTRIBUTING|CHANGELOG|rules|structure", group = "<!-- 4 -->📚 Documentation" },
-  { message = "Disable|Delete|Remove .", group = "<!-- 1 -->🙅‍♂️ Deprecated" },
+  { message = "Disable|Delete|Remove .", group = "<!-- 1 -->🙅 Deprecated" },
   { message = "^(F|f)ix", group = "<!-- 2 -->🐛 Bug Fixes" },
   { message = "^refactor|(C|c)hange|Move", group = "<!-- 3 -->🚜 Refactor" },
   { message = "^perf", group = "<!-- 5 -->⚡ Performance" },
