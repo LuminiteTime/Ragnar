@@ -9,7 +9,7 @@ All notable changes to this project will be documented in this file.
 - Add Russian lang for files names
 
 
-### 🙅‍♂️ Deprecated
+### 🙅 Deprecated
 
 - Remove Record-void and Call functionality
 
@@ -51,7 +51,7 @@ All notable changes to this project will be documented in this file.
 - Implement two functions for save-as-note feature
 
 
-### 🙅‍♂️ Deprecated
+### 🙅 Deprecated
 
 - Remove only main option for lint
 
@@ -134,7 +134,7 @@ All notable changes to this project will be documented in this file.
 - Add lost image
 
 
-### 🙅‍♂️ Deprecated
+### 🙅 Deprecated
 
 - Remove sign out option
 
@@ -190,7 +190,7 @@ All notable changes to this project will be documented in this file.
 - Add gitignore
 
 
-### 🙅‍♂️ Deprecated
+### 🙅 Deprecated
 
 - Delete wrong license
 
