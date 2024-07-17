@@ -136,13 +136,13 @@ async def signin(request: Request, form_data: SigninForm):
             user = Auths.authenticate_user(admin_email.lower(), admin_password)
     else:
         user = Auths.authenticate_user(form_data.email.lower(), form_data.password)
-
+        
     if user:
         token = create_token(
             data={"id": user.id},
             expires_delta=parse_duration(request.app.state.config.JWT_EXPIRES_IN),
         )
-
+        Users.update_user_by_id(user.id, {"settings": {"ui": {"models": ["google/gemma-7b-it:free"]}}})
         return {
             "token": token,
             "token_type": "Bearer",

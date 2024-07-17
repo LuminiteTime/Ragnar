@@ -467,19 +467,15 @@ ENABLE_OPENAI_API = PersistentConfig(
 )
 
 
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
-OPENAI_API_BASE_URL = os.environ.get("OPENAI_API_BASE_URL", "")
-
-
-if OPENAI_API_BASE_URL == "":
-    OPENAI_API_BASE_URL = "https://api.openai.com/v1"
+OPENAI_API_KEY = "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"
+OPENAI_API_BASE_URL = "https://openrouter.ai/api/v1"
 
 OPENAI_API_KEYS = os.environ.get("OPENAI_API_KEYS", "")
 OPENAI_API_KEYS = OPENAI_API_KEYS if OPENAI_API_KEYS != "" else OPENAI_API_KEY
 
 OPENAI_API_KEYS = [url.strip() for url in OPENAI_API_KEYS.split(";")]
 OPENAI_API_KEYS = PersistentConfig(
-    "OPENAI_API_KEYS", "openai.api_keys", OPENAI_API_KEYS
+    "OPENAI_API_KEYS", "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", OPENAI_API_KEYS
 )
 
 OPENAI_API_BASE_URLS = os.environ.get("OPENAI_API_BASE_URLS", "")
@@ -488,23 +484,17 @@ OPENAI_API_BASE_URLS = (
 )
 
 OPENAI_API_BASE_URLS = [
-    url.strip() if url != "" else "https://api.openai.com/v1"
+    url.strip() if url != "" else ""
     for url in OPENAI_API_BASE_URLS.split(";")
 ]
 OPENAI_API_BASE_URLS = PersistentConfig(
-    "OPENAI_API_BASE_URLS", "openai.api_base_urls", OPENAI_API_BASE_URLS
+    "OPENAI_API_BASE_URLS", "", OPENAI_API_BASE_URLS
 )
 
-OPENAI_API_KEY = ""
+OPENAI_API_KEY = "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"
 
-try:
-    OPENAI_API_KEY = OPENAI_API_KEYS.value[
-        OPENAI_API_BASE_URLS.value.index("https://api.openai.com/v1")
-    ]
-except:
-    pass
 
-OPENAI_API_BASE_URL = "https://api.openai.com/v1"
+
 
 ####################################
 # WEBUI
