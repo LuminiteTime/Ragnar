@@ -26,8 +26,8 @@ run_cliff:
   image: harbor.pg.innopolis.university/docker-hub-cache/library/node:20
   stage: cliff
   before_script:
-    - npm install --frozen-lockfile
-    - npm install git-cliff --save-dev
+    - npm install -g git-cliff
+    - git cliff --version
   script:
     - git cliff -o CHANGELOG.md
 
