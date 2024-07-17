@@ -27,6 +27,7 @@ run_cliff:
   stage: cliff
   before_script:
     - npm install --frozen-lockfile
+    - npm install git-cliff --save-dev
   script:
     - git cliff -o CHANGELOG.md
 
