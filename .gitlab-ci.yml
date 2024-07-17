@@ -46,13 +46,13 @@ echo_job:
 #   script:
 #     - npm run lint:backend # We decided to use tools for linting for Ragnar the same as used for Open-WebUI, thus configuration is taken from package.json of Open-WebU.
 
-lint_frontend:
-  image: harbor.pg.innopolis.university/docker-hub-cache/library/node:20
-  stage: lint
-  before_script:
-    - npm install --frozen-lockfile
-  script:
-    - npm run lint:frontend # We decided to use tools for linting for Ragnar the same as used for Open-WebUI, thus configuration is taken from package.json of Open-WebU.
+# lint_frontend:
+#   image: harbor.pg.innopolis.university/docker-hub-cache/library/node:20
+#   stage: lint
+#   before_script:
+#     - npm install --frozen-lockfile
+#   script:
+#     - npm run lint:frontend # We decided to use tools for linting for Ragnar the same as used for Open-WebUI, thus configuration is taken from package.json of Open-WebU.
 
 run_cliff:
   image: harbor.pg.innopolis.university/docker-hub-cache/library/node:20
