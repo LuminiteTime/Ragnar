@@ -22,17 +22,17 @@ echo_job:
 #     - docker build -t $CI_REGISTRY_IMAGE:latest .
 #     - docker push $CI_REGISTRY_IMAGE:latest
 
-# test_backend:
-#   stage: test
-#   image: harbor.pg.innopolis.university/docker-hub-cache/library/python:3.10-slim-bullseye
-#   before_script:
-#     - PIP_VERSION=$(pip --version | cut -d' ' -f2)
-#     - if [[ "$PIP_VERSION" < "24.0" ]]; then pip install --upgrade pip; fi
-#     - pip install -r backend/requirements.txt
-#     - pip install unittest
-#     - pip install asyncio
-#   script:
-#     - python -m unittest test_backend.main
+test_backend:
+  stage: test
+  image: harbor.pg.innopolis.university/docker-hub-cache/library/python:3.10-slim-bullseye
+  before_script:
+    - PIP_VERSION=$(pip --version | cut -d' ' -f2)
+    - if [[ "$PIP_VERSION" < "24.0" ]]; then pip install --upgrade pip; fi
+    - pip install -r backend/requirements.txt
+    - pip install unittest
+    - pip install asyncio
+  script:
+    - python -m unittest test_backend.main
 
 # lint_backend:
 #   stage: lint
@@ -60,4 +60,4 @@ run_cliff:
   before_script:
     - npm install --frozen-lockfile
   script:
-    - git cliff
+    - git cliff -o CHANGELOG.md

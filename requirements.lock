@@ -554,9 +554,6 @@ scipy==1.13.0
     # via sentence-transformers
 sentence-transformers==2.7.0
     # via open-webui
-setuptools==69.5.1
-    # via ctranslate2
-    # via opentelemetry-instrumentation
 shapely==2.0.4
     # via rapidocr-onnxruntime
 shellingham==1.5.4
