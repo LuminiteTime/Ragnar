@@ -52,3 +52,11 @@ lint_frontend:
     - npm install --frozen-lockfile
   script:
     - npm run lint:frontend # We decided to use tools for linting for Ragnar the same as used for Open-WebUI, thus configuration is taken from package.json of Open-WebU.
+
+cliff:
+  image: node:latest
+  stage: run git cliff
+  before_script:
+    - npm install --frozen-lockfile
+  script:
+    - git cliff
