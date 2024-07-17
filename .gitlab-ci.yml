@@ -30,6 +30,9 @@ run_cliff:
     - git cliff --version
   script:
     - git cliff > CHANGELOG.md
+    - git add CHANGELOG.md
+    - git commit -m "Update CHANGELOG.md [skip ci]"
+    - git push origin HEAD:dev_ci
   artifacts:
     paths:
       - CHANGELOG.md
