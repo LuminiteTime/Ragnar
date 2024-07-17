@@ -23,9 +23,9 @@ echo_job:
 #     - docker push $CI_REGISTRY_IMAGE:latest
 
 test_backend:
-  image: python:3.11.4
   stage: test
   before_script:
+    - docker pull harbor.pg.innopolis.university/docker-hub-cache/python:3.11.4
     - PIP_VERSION=$(pip --version | cut -d' ' -f2)
     - if [[ "$PIP_VERSION" < "24.0" ]]; then pip install --upgrade pip; fi
     - pip install -r backend/requirements.txt
@@ -35,9 +35,9 @@ test_backend:
     - python -m unittest test_backend.main
 
 lint_backend:
-  image: python:3.11.4
   stage: lint
   before_script:
+    - docker pull harbor.pg.innopolis.university/docker-hub-cache/python:3.11.4
     - PIP_VERSION=$(pip --version | cut -d' ' -f2)
     - if [[ "$PIP_VERSION" < "24.0" ]]; then pip install --upgrade pip; fi
     - pip install pylint
