@@ -29,7 +29,10 @@ run_cliff:
     - npm install -g git-cliff
     - git cliff --version
   script:
-    - git cliff -o CHANGELOG.md
+    - git cliff > CHANGELOG.md
+  artifacts:
+    paths:
+      - CHANGELOG.md
 
 test_backend:
   stage: test
