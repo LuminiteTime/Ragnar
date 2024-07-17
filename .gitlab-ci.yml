@@ -11,9 +11,9 @@
 
 stages:
   - echo_stage
+  - cliff
   - test
   - lint
-  - cliff
 
 echo_job:
   stage: echo_stage
@@ -21,6 +21,14 @@ echo_job:
       - echo "Placeholder"
 #     - docker build -t $CI_REGISTRY_IMAGE:latest .
 #     - docker push $CI_REGISTRY_IMAGE:latest
+
+run_cliff:
+  image: harbor.pg.innopolis.university/docker-hub-cache/library/node:20
+  stage: cliff
+  before_script:
+    - npm install --frozen-lockfile
+  script:
+    - git cliff -o CHANGELOG.md
 
 test_backend:
   stage: test
@@ -34,30 +42,22 @@ test_backend:
   script:
     - python -m unittest test_backend.main
 
-# lint_backend:
-#   stage: lint
-#   image: harbor.pg.innopolis.university/docker-hub-cache/library/python:3.10-slim-bullseye
-#   before_script:
-#     - PIP_VERSION=$(pip --version | cut -d' ' -f2)
-#     - if [[ "$PIP_VERSION" < "24.0" ]]; then pip install --upgrade pip; fi
-#     - pip install pylint
-#     - curl -sL https://deb.nodesource.com/setup_16.x | bash -
-#     - apt-get install -y nodejs
-#   script:
-#     - npm run lint:backend # We decided to use tools for linting for Ragnar the same as used for Open-WebUI, thus configuration is taken from package.json of Open-WebU.
+lint_backend:
+  stage: lint
+  image: harbor.pg.innopolis.university/docker-hub-cache/library/python:3.10-slim-bullseye
+  before_script:
+    - PIP_VERSION=$(pip --version | cut -d' ' -f2)
+    - if [[ "$PIP_VERSION" < "24.0" ]]; then pip install --upgrade pip; fi
+    - pip install pylint
+    - curl -sL https://deb.nodesource.com/setup_16.x | bash -
+    - apt-get install -y nodejs
+  script:
+    - npm run lint:backend # We decided to use tools for linting for Ragnar the same as used for Open-WebUI, thus configuration is taken from package.json of Open-WebU.
 
-# lint_frontend:
-#   image: harbor.pg.innopolis.university/docker-hub-cache/library/node:20
-#   stage: lint
-#   before_script:
-#     - npm install --frozen-lockfile
-#   script:
-#     - npm run lint:frontend # We decided to use tools for linting for Ragnar the same as used for Open-WebUI, thus configuration is taken from package.json of Open-WebU.
-
-run_cliff:
+lint_frontend:
   image: harbor.pg.innopolis.university/docker-hub-cache/library/node:20
-  stage: cliff
+  stage: lint
   before_script:
     - npm install --frozen-lockfile
   script:
-    - git cliff -o CHANGELOG.md
+    - npm run lint:frontend # We decided to use tools for linting for Ragnar the same as used for Open-WebUI, thus configuration is taken from package.json of Open-WebU.
