@@ -17,6 +17,8 @@ stages:
 
 echo_job:
   stage: echo_stage
+  before_script: 
+    - docker pull harbor.pg.innopolis.university/docker-hub-cache/debian:stable-slim
   script:
       - echo "Placeholder"
 #     - docker build -t $CI_REGISTRY_IMAGE:latest .
