@@ -28,6 +28,8 @@ run_cliff:
   before_script:
     - npm install -g git-cliff
     - git cliff --version
+    - git config --global user.email "ci@example.com"
+    - git config --global user.name "CI Bot"
   script:
     - git cliff > CHANGELOG.md
     - git add CHANGELOG.md
