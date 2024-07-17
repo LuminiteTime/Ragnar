@@ -13,6 +13,7 @@ stages:
   - echo_stage
   - test
   - lint
+  - cliff
 
 echo_job:
   stage: echo_stage
