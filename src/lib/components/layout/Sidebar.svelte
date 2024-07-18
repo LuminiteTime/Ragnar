@@ -350,7 +350,7 @@
 					</div>
 
 					<div class="flex self-center">
-						<div class=" self-center font-medium text-sm">{$i18n.t('Workspace')}</div>
+						<div class=" self-center font-medium text-sm">{$i18n.t('Documents')}</div>
 					</div>
 				</a>
 			</div>
