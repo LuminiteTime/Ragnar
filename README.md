@@ -26,7 +26,6 @@
         <li>
             <a href="#usage-instructions">Usage Instructions</a>
             <ul>
-                <li> <a href="#important-configure-llm">Important configure LLM</a> </li>
                 <li>
                 <a href="#upload-documents"> Upload Documents</a>
                 </li>
@@ -159,53 +158,49 @@ then the app is starting normally)
 
 # Usage Instructions
 
-### Important! Configure LLM:
-To start chatting with LLM we recomend to use phi3:mini model, you can set it up by clicking arrow-down icon to the right of "Select a model" label in the top-left corner of the chat window. Then if did not download LLM earlier type ```phi3:mini``` and press "Pull phi3:mini from Ollama.com". For this step you will need Internet connection but when the model is downloaded the app does not need Internet connection.
-
-### Upload Documents 
+### <ins id="upload-documents">Upload Documents</ins> 
 
 There are 3 variants how to upload doceuments to the chat:
-1. Drag and drop document to the chat.
-2. Press at the **plus** button and the left corner of input line.
-3. Put it in **Workspace**.
-   1. At the left side pannel find chapter Workspace and move to it.
-   2. In opened window at the top find chapter Document. 
-   3. At the right side of the chapter Document find **button plus** and press it.
-   4. In opened window click at the button **Click here to select documents.**
-   5. Select Document in your files.
+
+**I.** Drag and drop document to the chat. It will be attached to your next message in the chat. Note that documents uploaded this way will be visible only in scope of the current chat and will not be dicplayed in the **Documents** section. 
+
+**II.** Press the **plus** button in the left corner of input line. Then you will see 2 options:
+   1.  **Upload Files** — to upload files into the chat. Note that they will be visible only in scope of the current chat.
+   2. **Use Uploaded** — to attach documents already uploaded in **Documents** section.  
+
+**III.** Put it in **Documents** section.
+
+***Important!** Only by following this step (**III**) the uploaded documents will be saved in the app storage for all chats, not only for the current.*
+   1. At the left side pannel find button **Documents** and move to it.
+   2. At the top side of the section **Documents** find **+ Add document** button and press it.
+   3. In the opened window click at the button **Click here to select documents.**
+   4. Select documents in your files.
+   5. Press **Save** button.
 
 **Where to find documents**
 
-Documents are store in **Workspace** 
-1. At the left side pannel find chapter Workspace and move to it.
-2. In opened window at the top find chapter Document.
+Documents are store in **Documents** section which you can find by pressing **Documents** button at the left side panel. There you can upload documents, delete them and edit their titles and tags in the system. 
 
-### Chat with LLM
+### <ins id="chat-with-llm">Chat with LLM</ins>
 
 **Add new chat** \
-To start new chat with LLM press **button New Chat** at the top of left side bar. 
+To start new chat with LLM press button **New Chat** at the top of the side bar. 
 
-**Choose Documents for work**\
-To choose documents with that you want to work write in input line **#** and in opened list, choose **all** if you want to work wth all Documents or specify document to work with 
+**Choose already uploaded documents to ask about**\
+You can attach files wich you want to ask Ragnar about by pressing the **plus** button in the left corner of input line and then choosing **Use Uploaded** option. This will insert **#** sign into the input line and show list of documents. Choose **All documents** if you want to attach all uploaded documents or choose documents one by one to explicitely specify them.
 
-### Work with Responses 
+### <ins id="work-with-responses">Work with Responses</ins> 
 
 **How to edit response**
 
 To edit LLM's response you need to:
-1. Find **button pencil** at the bottom of the response and press it.
-2. After pressing you wil enter to the edit mode where you can add or remove some text.
-3. After all changes press **Save** if you want to save changes and **Cancel** if you do not want to edit note.
+1. Find button with **pencil** icon at the left-bottom corner of the response and press it.
+2. After pressing you will be able to edit the response.
+3. After all changes press **Save** if you want just to save changes, **Save as note** if you want to save edited response as a note which will be then saved as a markdown file in Ragnar file storage (**Documents** section), and **Cancel** if you do not want to edit note.
 
-**How to save response as note**
+**Where to find and how to work with notes**
 
-To save LLM's response as note you need to:
-1. Find **button pencil** at the bottom of the response and press it.
-2. After pressing you wil enter to the edit mode where you can add or remove some text.
-3. After all changes press **Save as note** if you want to save response as note.
-
-
-Congratulations! You have successfully started Ragnar. 
+Saved notes are stored as markdown files and can be found in **Documents** section. You can work with them as with usual documents. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
