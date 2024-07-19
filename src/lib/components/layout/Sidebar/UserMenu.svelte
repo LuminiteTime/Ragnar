@@ -66,23 +66,6 @@
 				</div>
 				<div class=" self-center font-medium">{$i18n.t('Settings')}</div>
 			</button>
-
-			<button
-				class="flex rounded-md py-2 px-3 w-full hover:bg-gray-50 dark:hover:bg-gray-800 transition"
-				on:click={() => {
-					dispatch('show', 'archived-chat');
-					show = false;
-				}}
-			>
-				<div class=" self-center mr-3">
-					<ArchiveBox className="size-5" strokeWidth="1.5" />
-				</div>
-				<div class=" self-center font-medium">{$i18n.t('Archived Chats')}</div>
-			</button>
-
-			<!-- <DropdownMenu.Item class="flex items-center px-3 py-2 text-sm  font-medium">
-				<div class="flex items-center">Profile</div>
-			</DropdownMenu.Item> -->
 		</DropdownMenu.Content>
 	</slot>
 </DropdownMenu.Root>
