@@ -105,8 +105,15 @@ Ragnar is designed to be simple and straightforward to use. Its user-friendly in
 
 # Installation Guide
 
-Welcome to Ragnar MVP-v2! This guide will walk you through cloning the repository and starting the application using Docker.
+Welcome to Ragnar MVP-v4! This guide will walk you through cloning the repository and starting the application using Docker.
 
+<<<<<<< 1bf203ca907fdfe832dc5d657f443b8b876530d3
+To install the stable and the newest version of Ragnar run this command in terminal:
+``` sh 
+sudo docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v ragnar:/app/backend/data --name ragnar --restart always luminitetime/ragnar_final:latest
+```
+After all will be downloaded you can open ragnar on http://localhost:3000 
+=======
 ### Without Olama app
 
 1. Unzip release files
@@ -153,6 +160,7 @@ then the app is starting normally)
    ```
 5. Enjoy using ragnar
 6. For next runnnings you will need run ollama ([step 2](#with-ollama-app)) and run docker container ([step 4](#with-ollama-app))
+>>>>>>> f2edf75de2ba1b083254deff99163191403ee863
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
