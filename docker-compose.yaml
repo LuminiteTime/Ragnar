@@ -1,4 +1,6 @@
 services:
+<<<<<<< 86d0a2e6e035453f176c4d02981d6d5692764bbf
+=======
   ollama:
     volumes:
       - ollama:/root/.ollama
@@ -8,27 +10,22 @@ services:
     restart: unless-stopped
     image: ollama/ollama:0.2.0
 
+>>>>>>> 5ccda32cb4baf251ab8d0330be0d29594baacb76
   ragnar:
     build:
       context: .
-      args:
-        OLLAMA_BASE_URL: '/ollama'
       dockerfile: Dockerfile
-    image: brainpumpkin/ragnar:latest
-    container_name: Ragnar
+    image: luminitetime/ragnar_final:latest
+    container_name: ragnar
     volumes:
       - ragnar:/app/backend/data
-    depends_on:
-      - ollama
     ports:
       - ${OPEN_WEBUI_PORT-3000}:8080
     environment:
-      - 'OLLAMA_BASE_URL=http://ollama:11434'
       - 'WEBUI_SECRET_KEY='
     extra_hosts:
       - host.docker.internal:host-gateway
     restart: unless-stopped
 
 volumes:
-  ollama: {}
   ragnar: {}
