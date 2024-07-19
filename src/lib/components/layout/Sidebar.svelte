@@ -234,13 +234,13 @@
 	bind:this={navElement}
 	id="sidebar"
 	class="h-screen max-h-[100dvh] min-h-screen select-none {$showSidebar
-		? 'md:relative w-[260px]'
+		? 'md:relative w-[230px]'
 		: '-translate-x-[260px] w-[0px]'} bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-200 text-sm transition fixed z-50 top-0 left-0 rounded-r-2xl
         "
 	data-state={$showSidebar}
 >
 	<div
-		class="py-2.5 my-auto flex flex-col justify-between h-screen max-h-[100dvh] w-[260px] z-50 {$showSidebar
+		class="py-2.5 my-auto flex flex-col justify-between h-screen max-h-[100dvh] w-[230px] z-50 {$showSidebar
 			? ''
 			: 'invisible'}"
 	>
@@ -272,7 +272,7 @@
 						alt="logo"
 					/>
 				</div>
-				<div class=" self-center font-medium text-sm text-gray-850 dark:text-white">
+				<div class=" self-center font-medium text-[0.950rem] text-gray-850 dark:text-white">
 					{$i18n.t('New Chat')}
 				</div>
 				<div class="self-center ml-auto">
@@ -333,24 +333,11 @@
 					draggable="false"
 				>
 					<div class="self-center">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke-width="2"
-							stroke="currentColor"
-							class="size-[1.1rem]"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 0 0 2.25-2.25V6a2.25 2.25 0 0 0-2.25-2.25H6A2.25 2.25 0 0 0 3.75 6v2.25A2.25 2.25 0 0 0 6 10.5Zm0 9.75h2.25A2.25 2.25 0 0 0 10.5 18v-2.25a2.25 2.25 0 0 0-2.25-2.25H6a2.25 2.25 0 0 0-2.25 2.25V18A2.25 2.25 0 0 0 6 20.25Zm9.75-9.75H18a2.25 2.25 0 0 0 2.25-2.25V6A2.25 2.25 0 0 0 18 3.75h-2.25A2.25 2.25 0 0 0 13.5 6v2.25a2.25 2.25 0 0 0 2.25 2.25Z"
-							/>
-						</svg>
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-files size-[1.1rem]"><path d="M20 7h-3a2 2 0 0 1-2-2V2"/><path d="M9 18a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h7l4 4v10a2 2 0 0 1-2 2Z"/><path d="M3 7.6v12.8A1.6 1.6 0 0 0 4.6 22h9.8"/></svg>
 					</div>
 
 					<div class="flex self-center">
-						<div class=" self-center font-medium text-sm">{$i18n.t('Documents')}</div>
+						<div class=" self-center font-medium text-[0.950rem]">{$i18n.t('Documents')}</div>
 					</div>
 				</a>
 			</div>
@@ -418,7 +405,7 @@
 					</div>
 
 					<input
-						class="w-full rounded-r-xl py-1.5 pl-2.5 pr-4 text-sm bg-transparent dark:text-gray-300 outline-none"
+						class="w-full rounded-r-xl py-1.5 pl-2.5 pr-4 text-[0.950rem] bg-transparent dark:text-gray-300 outline-none"
 						placeholder={$i18n.t('Search')}
 						bind:value={search}
 						on:focus={() => {
