@@ -14,6 +14,7 @@
 	const i18n = getContext('i18n');
 
 	export let uploadFilesHandler: Function;
+	export let submitPrompt: Function;
 
 	export let selectedToolIds: string[] = [];
 	export let webSearchEnabled: boolean;
@@ -22,21 +23,21 @@
 	export let onClose: Function;
 
 	$: tools = Object.fromEntries(
-		Object.keys(tools).map((toolId) => [
-			toolId,
-			{
-				...tools[toolId],
-				enabled: selectedToolIds.includes(toolId)
-			}
-		])
+			Object.keys(tools).map((toolId) => [
+				toolId,
+				{
+					...tools[toolId],
+					enabled: selectedToolIds.includes(toolId)
+				}
+			])
 	);
 
 	let show = false;
 </script>
 
 <Dropdown
-	bind:show
-	on:change={(e) => {
+		bind:show
+		on:change={(e) => {
 		if (e.detail === false) {
 			onClose();
 		}
@@ -48,18 +49,18 @@
 
 	<div slot="content">
 		<DropdownMenu.Content
-			class="w-full max-w-[200px] rounded-xl px-1 py-1  border-gray-300/30 dark:border-gray-700/50 z-50 bg-white dark:bg-gray-850 dark:text-white shadow"
-			sideOffset={15}
-			alignOffset={-8}
-			side="top"
-			align="start"
-			transition={flyAndScale}
+				class="w-full max-w-[200px] rounded-xl px-1 py-1  border-gray-300/30 dark:border-gray-700/50 z-50 bg-white dark:bg-gray-850 dark:text-white shadow"
+				sideOffset={15}
+				alignOffset={-8}
+				side="top"
+				align="start"
+				transition={flyAndScale}
 		>
 			{#if Object.keys(tools).length > 0}
 				<div class="  max-h-28 overflow-y-auto scrollbar-hidden">
 					{#each Object.keys(tools) as toolId}
 						<div
-							class="flex gap-2 items-center px-3 py-2 text-sm font-medium cursor-pointer rounded-xl"
+								class="flex gap-2 items-center px-3 py-2 text-sm font-medium cursor-pointer rounded-xl"
 						>
 							<div class="flex-1 flex items-center gap-2">
 								<WrenchSolid />
@@ -69,8 +70,8 @@
 							</div>
 
 							<Switch
-								bind:state={tools[toolId].enabled}
-								on:change={(e) => {
+									bind:state={tools[toolId].enabled}
+									on:change={(e) => {
 									selectedToolIds = e.detail
 										? [...selectedToolIds, toolId]
 										: selectedToolIds.filter((id) => id !== toolId);
@@ -85,7 +86,7 @@
 
 			{#if $config?.features?.enable_web_search}
 				<div
-					class="flex gap-2 items-center px-3 py-2 text-sm font-medium cursor-pointer rounded-xl"
+						class="flex gap-2 items-center px-3 py-2 text-sm font-medium cursor-pointer rounded-xl"
 				>
 					<div class="flex-1 flex items-center gap-2">
 						<GlobeAltSolid />
@@ -99,13 +100,22 @@
 			{/if}
 
 			<DropdownMenu.Item
-				class="flex gap-2 items-center px-3 py-2 text-sm  font-medium cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800  rounded-xl"
-				on:click={() => {
+					class="flex gap-2 items-center px-3 py-2 text-sm  font-medium cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800  rounded-xl"
+					on:click={() => {
 					uploadFilesHandler();
 				}}
 			>
 				<DocumentArrowUpSolid />
 				<div class=" line-clamp-1">{$i18n.t('Upload Files')}</div>
+			</DropdownMenu.Item>
+			<DropdownMenu.Item
+					class="flex gap-2 items-center px-3 py-2 text-sm  font-medium cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800  rounded-xl"
+					on:click={() => {
+					submitPrompt('#');
+				}}
+			>
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-hash size-[1rem]"><line x1="4" x2="20" y1="9" y2="9"/><line x1="4" x2="20" y1="15" y2="15"/><line x1="10" x2="8" y1="3" y2="21"/><line x1="16" x2="14" y1="3" y2="21"/></svg>
+				<div class=" line-clamp-1">{'Use Uploaded'}</div>
 			</DropdownMenu.Item>
 		</DropdownMenu.Content>
 	</div>
