@@ -9,12 +9,7 @@
 
 	let prompts = [];
 
-	$: prompts = suggestionPrompts
-		.reduce((acc, current) => [...acc, ...[current]], [])
-		.sort(() => Math.random() - 0.5);
-	// suggestionPrompts.length <= 4
-	// 	? suggestionPrompts
-	// 	: suggestionPrompts.sort(() => Math.random() - 0.5).slice(0, 4);
+	$: prompts = suggestionPrompts;
 
 	onMount(() => {
 		const containerElement = document.getElementById('suggestions-container');
