@@ -14,6 +14,8 @@ import json
 
 from config import SRC_LOG_LEVELS
 
+import os
+
 log = logging.getLogger(__name__)
 log.setLevel(SRC_LOG_LEVELS["MODELS"])
 
@@ -149,9 +151,18 @@ class DocumentsTable:
 
     def delete_doc_by_name(self, name: str) -> bool:
         try:
+            filename = Documents.get_doc_by_name(name).filename
             query = Document.delete().where((Document.name == name))
-            query.execute()  # Remove the rows, return number of rows removed.
-
+            deleted_count = query.execute()  # Remove the rows, return number of rows removed.
+            if deleted_count > 0:
+                uploads_path = os.path.join('data', 'uploads', filename)
+                docs_path = os.path.join('data', 'docs', filename)
+            
+                if os.path.exists(uploads_path):
+                    os.remove(uploads_path)
+              
+                if os.path.exists(docs_path):
+                    os.remove(docs_path)
             return True
         except:
             return False
