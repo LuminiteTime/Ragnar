@@ -51,7 +51,7 @@
 			</div>
 		</div>
 
-		<div
+		<!-- <div
 			class=" mt-2 mb-4 text-3xl text-gray-800 dark:text-gray-100 font-semibold text-left flex items-center gap-4"
 		>
 			<div>
@@ -91,7 +91,7 @@
 					{/if}
 				</div>
 			</div>
-		</div>
+		</div> -->
 
 		<div class=" w-full" in:fade={{ duration: 200, delay: 300 }}>
 			<Suggestions
