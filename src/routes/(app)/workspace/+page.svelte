@@ -3,6 +3,6 @@
 	import { onMount } from 'svelte';
 
 	onMount(() => {
-		goto('/workspace/documents');
+		window.location.href = '/workspace/documents';
 	});
 </script>
