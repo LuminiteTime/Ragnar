@@ -467,19 +467,15 @@ ENABLE_OPENAI_API = PersistentConfig(
 )
 
 
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
-OPENAI_API_BASE_URL = os.environ.get("OPENAI_API_BASE_URL", "")
-
-
-if OPENAI_API_BASE_URL == "":
-    OPENAI_API_BASE_URL = "https://api.openai.com/v1"
+OPENAI_API_KEY = "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"
+OPENAI_API_BASE_URL = "https://openrouter.ai/api/v1"
 
 OPENAI_API_KEYS = os.environ.get("OPENAI_API_KEYS", "")
 OPENAI_API_KEYS = OPENAI_API_KEYS if OPENAI_API_KEYS != "" else OPENAI_API_KEY
 
 OPENAI_API_KEYS = [url.strip() for url in OPENAI_API_KEYS.split(";")]
 OPENAI_API_KEYS = PersistentConfig(
-    "OPENAI_API_KEYS", "openai.api_keys", OPENAI_API_KEYS
+    "OPENAI_API_KEYS", "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", OPENAI_API_KEYS
 )
 
 OPENAI_API_BASE_URLS = os.environ.get("OPENAI_API_BASE_URLS", "")
@@ -488,23 +484,17 @@ OPENAI_API_BASE_URLS = (
 )
 
 OPENAI_API_BASE_URLS = [
-    url.strip() if url != "" else "https://api.openai.com/v1"
+    url.strip() if url != "" else ""
     for url in OPENAI_API_BASE_URLS.split(";")
 ]
 OPENAI_API_BASE_URLS = PersistentConfig(
-    "OPENAI_API_BASE_URLS", "openai.api_base_urls", OPENAI_API_BASE_URLS
+    "OPENAI_API_BASE_URLS", "", OPENAI_API_BASE_URLS
 )
 
-OPENAI_API_KEY = ""
+OPENAI_API_KEY = "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"
 
-try:
-    OPENAI_API_KEY = OPENAI_API_KEYS.value[
-        OPENAI_API_BASE_URLS.value.index("https://api.openai.com/v1")
-    ]
-except:
-    pass
 
-OPENAI_API_BASE_URL = "https://api.openai.com/v1"
+
 
 ####################################
 # WEBUI
@@ -528,32 +518,25 @@ DEFAULT_PROMPT_SUGGESTIONS = PersistentConfig(
     "ui.prompt_suggestions",
     [
         {
-            "title": ["Help me study", "vocabulary for a college entrance exam"],
-            "content": "Help me study vocabulary: write a sentence for me to fill in the blank, and I'll try to pick the correct option.",
+            "title": ["How can I use Ragnar?", "How can I upload documents, chat, save notes?"],
+            "content": "How can I use Ragnar?",
         },
         {
-            "title": ["Give me ideas", "for what to do with my kids' art"],
-            "content": "What are 5 creative things I could do with my kids' art? I don't want to throw them away, but it's also so much clutter.",
+            "title": ["How to upload documents?", "I want to upload documents into Ragnar."],
+            "content": "How to upload documents?",
         },
         {
-            "title": ["Tell me a fun fact", "about the Roman Empire"],
-            "content": "Tell me a random fun fact about the Roman Empire",
+            "title": ["How to chat with Ragnar?", "I want to chat with Ragnar."],
+            "content": "How to chat with Ragnar?",
         },
         {
-            "title": ["Show me a code snippet", "of a website's sticky header"],
-            "content": "Show me a code snippet of a website's sticky header in CSS and JavaScript.",
+            "title": ["How to save notes?", "I want to save responses as notes in Ragnar."],
+            "content": "How to save notes?",
         },
         {
-            "title": [
-                "Explain options trading",
-                "if I'm familiar with buying and selling stocks",
-            ],
-            "content": "Explain options trading in simple terms if I'm familiar with buying and selling stocks.",
-        },
-        {
-            "title": ["Overcome procrastination", "give me tips"],
-            "content": "Could you start by asking me about instances when I procrastinate the most and then give me some suggestions to overcome it?",
-        },
+            "title": ["How to attach files?", "I want to attach files in the chat and ask about them."],
+            "content": "How to attach files?",
+        }
     ],
 )
 

@@ -70,9 +70,9 @@ async def update_profile(
         if user:
             return user
         else:
-            raise HTTPException(400, detail=ERROR_MESSAGES.DEFAULT())
+            return
     else:
-        raise HTTPException(400, detail=ERROR_MESSAGES.INVALID_CRED)
+        return
 
 
 ############################
@@ -85,7 +85,7 @@ async def update_password(
     form_data: UpdatePasswordForm, session_user=Depends(get_current_user)
 ):
     if WEBUI_AUTH_TRUSTED_EMAIL_HEADER:
-        raise HTTPException(400, detail=ERROR_MESSAGES.ACTION_PROHIBITED)
+        return
     if session_user:
         user = Auths.authenticate_user(session_user.email, form_data.password)
 
@@ -93,9 +93,9 @@ async def update_password(
             hashed = get_password_hash(form_data.new_password)
             return Auths.update_user_password_by_id(user.id, hashed)
         else:
-            raise HTTPException(400, detail=ERROR_MESSAGES.INVALID_PASSWORD)
+            return
     else:
-        raise HTTPException(400, detail=ERROR_MESSAGES.INVALID_CRED)
+        return
 
 
 ############################
@@ -107,7 +107,7 @@ async def update_password(
 async def signin(request: Request, form_data: SigninForm):
     if WEBUI_AUTH_TRUSTED_EMAIL_HEADER:
         if WEBUI_AUTH_TRUSTED_EMAIL_HEADER not in request.headers:
-            raise HTTPException(400, detail=ERROR_MESSAGES.INVALID_TRUSTED_HEADER)
+            return
 
         trusted_email = request.headers[WEBUI_AUTH_TRUSTED_EMAIL_HEADER].lower()
         if not Users.get_user_by_email(trusted_email.lower()):
@@ -126,7 +126,7 @@ async def signin(request: Request, form_data: SigninForm):
             user = Auths.authenticate_user(admin_email.lower(), admin_password)
         else:
             if Users.get_num_users() != 0:
-                raise HTTPException(400, detail=ERROR_MESSAGES.EXISTING_USERS)
+                return
 
             await signup(
                 request,
@@ -136,13 +136,13 @@ async def signin(request: Request, form_data: SigninForm):
             user = Auths.authenticate_user(admin_email.lower(), admin_password)
     else:
         user = Auths.authenticate_user(form_data.email.lower(), form_data.password)
-
+        
     if user:
         token = create_token(
             data={"id": user.id},
             expires_delta=parse_duration(request.app.state.config.JWT_EXPIRES_IN),
         )
-
+        Users.update_user_by_id(user.id, {"settings": {"ui": {"models": ["google/gemma-7b-it:free"]}}})
         return {
             "token": token,
             "token_type": "Bearer",
@@ -153,7 +153,7 @@ async def signin(request: Request, form_data: SigninForm):
             "profile_image_url": user.profile_image_url,
         }
     else:
-        raise HTTPException(400, detail=ERROR_MESSAGES.INVALID_CRED)
+        return
 
 
 ############################
@@ -164,17 +164,13 @@ async def signin(request: Request, form_data: SigninForm):
 @router.post("/signup", response_model=SigninResponse)
 async def signup(request: Request, form_data: SignupForm):
     if not request.app.state.config.ENABLE_SIGNUP and WEBUI_AUTH:
-        raise HTTPException(
-            status.HTTP_403_FORBIDDEN, detail=ERROR_MESSAGES.ACCESS_PROHIBITED
-        )
+        return
 
     if not validate_email_format(form_data.email.lower()):
-        raise HTTPException(
-            status.HTTP_400_BAD_REQUEST, detail=ERROR_MESSAGES.INVALID_EMAIL_FORMAT
-        )
+        return
 
     if Users.get_user_by_email(form_data.email.lower()):
-        raise HTTPException(400, detail=ERROR_MESSAGES.EMAIL_TAKEN)
+        return
 
     try:
         role = (
@@ -219,9 +215,9 @@ async def signup(request: Request, form_data: SignupForm):
                 "profile_image_url": user.profile_image_url,
             }
         else:
-            raise HTTPException(500, detail=ERROR_MESSAGES.CREATE_USER_ERROR)
+            return
     except Exception as err:
-        raise HTTPException(500, detail=ERROR_MESSAGES.DEFAULT(err))
+        return
 
 
 ############################
@@ -233,12 +229,10 @@ async def signup(request: Request, form_data: SignupForm):
 async def add_user(form_data: AddUserForm, user=Depends(get_admin_user)):
 
     if not validate_email_format(form_data.email.lower()):
-        raise HTTPException(
-            status.HTTP_400_BAD_REQUEST, detail=ERROR_MESSAGES.INVALID_EMAIL_FORMAT
-        )
+        return
 
     if Users.get_user_by_email(form_data.email.lower()):
-        raise HTTPException(400, detail=ERROR_MESSAGES.EMAIL_TAKEN)
+        return
 
     try:
 
@@ -264,9 +258,9 @@ async def add_user(form_data: AddUserForm, user=Depends(get_admin_user)):
                 "profile_image_url": user.profile_image_url,
             }
         else:
-            raise HTTPException(500, detail=ERROR_MESSAGES.CREATE_USER_ERROR)
+            return
     except Exception as err:
-        raise HTTPException(500, detail=ERROR_MESSAGES.DEFAULT(err))
+        return
 
 
 ############################
@@ -297,7 +291,7 @@ async def get_admin_details(request: Request, user=Depends(get_current_user)):
             "email": admin_email,
         }
     else:
-        raise HTTPException(400, detail=ERROR_MESSAGES.ACTION_PROHIBITED)
+        return
 
 
 ############################
@@ -368,7 +362,7 @@ async def create_api_key_(user=Depends(get_current_user)):
             "api_key": api_key,
         }
     else:
-        raise HTTPException(500, detail=ERROR_MESSAGES.CREATE_API_KEY_ERROR)
+        return
 
 
 # delete api key
@@ -387,4 +381,4 @@ async def get_api_key(user=Depends(get_current_user)):
             "api_key": api_key,
         }
     else:
-        raise HTTPException(404, detail=ERROR_MESSAGES.API_KEY_NOT_FOUND)
+        return

@@ -71,7 +71,7 @@ def get_http_authorization_cred(auth_header: str):
         scheme, credentials = auth_header.split(" ")
         return HTTPAuthorizationCredentials(scheme=scheme, credentials=credentials)
     except:
-        raise ValueError(ERROR_MESSAGES.INVALID_TOKEN)
+        ...
 
 
 def get_current_user(
@@ -85,18 +85,12 @@ def get_current_user(
     if data != None and "id" in data:
         user = Users.get_user_by_id(data["id"])
         if user is None:
-            raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail=ERROR_MESSAGES.INVALID_TOKEN,
-            )
+            ...
         else:
             Users.update_user_last_active_by_id(user.id)
         return user
     else:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail=ERROR_MESSAGES.UNAUTHORIZED,
-        )
+        ...
 
 
 def get_current_user_by_api_key(api_key: str):

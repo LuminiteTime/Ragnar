@@ -9,12 +9,7 @@
 
 	let prompts = [];
 
-	$: prompts = suggestionPrompts
-		.reduce((acc, current) => [...acc, ...[current]], [])
-		.sort(() => Math.random() - 0.5);
-	// suggestionPrompts.length <= 4
-	// 	? suggestionPrompts
-	// 	: suggestionPrompts.sort(() => Math.random() - 0.5).slice(0, 4);
+	$: prompts = suggestionPrompts;
 
 	onMount(() => {
 		const containerElement = document.getElementById('suggestions-container');
@@ -47,7 +42,7 @@
 		{#each prompts as prompt, promptIdx}
 			<div class="snap-center shrink-0">
 				<button
-					class="flex flex-col flex-1 shrink-0 w-64 justify-between h-36 p-5 px-6 bg-gray-50 hover:bg-gray-100 dark:bg-gray-850 dark:hover:bg-gray-800 rounded-3xl transition group"
+					class="flex flex-col flex-1 shrink-0 w-80 justify-between h-52 p-5 px-6 bg-gray-50 hover:bg-gray-100 dark:bg-gray-850 dark:hover:bg-gray-800 rounded-3xl transition group"
 					on:click={() => {
 						submitPrompt(prompt.content);
 					}}

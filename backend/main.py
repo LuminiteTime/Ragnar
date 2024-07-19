@@ -266,6 +266,7 @@ async def get_function_call_response(messages, tool_id, template, task_model_id,
 
 class ChatCompletionMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
+        
         return_citations = False
 
         if request.method == "POST" and (
@@ -280,11 +281,10 @@ class ChatCompletionMiddleware(BaseHTTPMiddleware):
             body_str = body.decode("utf-8")
             # Parse string to JSON
             data = json.loads(body_str) if body_str else {}
-
+            
             user = get_current_user(
                 get_http_authorization_cred(request.headers.get("Authorization"))
             )
-
             # Remove the citations from the body
             return_citations = data.get("citations", False)
             if "citations" in data:
@@ -331,6 +331,7 @@ class ChatCompletionMiddleware(BaseHTTPMiddleware):
 
                     if response:
                         context += ("\n" if context != "" else "") + response
+
                 del data["tool_ids"]
 
                 print(f"tool_context: {context}")
@@ -359,13 +360,79 @@ class ChatCompletionMiddleware(BaseHTTPMiddleware):
                 system_prompt = rag_template(
                     rag_app.state.config.RAG_TEMPLATE, context, prompt
                 )
-
                 print(system_prompt)
 
                 data["messages"] = add_or_update_system_message(
                     f"\n{system_prompt}", data["messages"]
                 )
+            else:
+                usage_text = """
+                    # Usage Instructions of Ragnar
 
+### <ins id="upload-documents">Upload Documents</ins> 
+
+There are 3 variants how to upload doceuments to the chat:
+
+**I.** Drag and drop document to the chat. It will be attached to your next message in the chat. Note that documents uploaded this way will be visible only in scope of the current chat and will not be dicplayed in the **Documents** section. 
+
+**II.** Press the **plus** button in the left corner of input line. Then you will see 2 options:
+   1.  **Upload Files** — to upload files into the chat. Note that they will be visible only in scope of the current chat.
+   2. **Use Uploaded** — to attach documents already uploaded in **Documents** section.  
+
+**III.** Put it in **Documents** section.
+
+***Important!** Only by following this step (**III**) the uploaded documents will be saved in the app storage for all chats, not only for the current.*
+   1. At the left side pannel find button **Documents** and move to it.
+   2. At the top side of the section **Documents** find **+ Add document** button and press it.
+   3. In the opened window click at the button **Click here to select documents.**
+   4. Select documents in your files.
+   5. Press **Save** button.
+
+**Where to find documents**
+
+Documents are store in **Documents** section which you can find by pressing **Documents** button at the left side panel. There you can upload documents, delete them and edit their titles and tags in the system. 
+
+### <ins id="chat-with-llm">Chat with LLM</ins>
+
+**Add new chat** \
+To start new chat with LLM press button **New Chat** at the top of the side bar. 
+
+**Choose already uploaded documents to ask about**\
+You can attach files wich you want to ask Ragnar about by pressing the **plus** button in the left corner of input line and then choosing **Use Uploaded** option. This will insert **#** sign into the input line and show list of documents. Choose **All documents** if you want to attach all uploaded documents or choose documents one by one to explicitely specify them.
+
+### <ins id="work-with-responses">Work with Responses</ins> 
+
+**How to edit response**
+
+To edit LLM's response you need to:
+1. Find button with **pencil** icon at the left-bottom corner of the response and press it.
+2. After pressing you will be able to edit the response.
+3. After all changes press **Save** if you want just to save changes, **Save as note** if you want to save edited response as a note which will be then saved as a markdown file in Ragnar file storage (**Documents** section), and **Cancel** if you do not want to edit note.
+
+**Where to find and how to work with notes**
+
+Saved notes are stored as markdown files and can be found in **Documents** section. You can work with them as with usual documents. 
+
+                """
+                
+                help_temp = """
+<Instruction>
+    You are to assist users by answering questions related to the MarkDown text [usage]. If the user does not ask a specific question, provide a general explanation or overview regarding the text [usage]. Additionally, identify the language of the user's query and respond in the same language. And do not translate words or terms in ** .
+</Instruction>
+
+User's query: [query]
+"""
+                    
+                system_prompt = help_temp.replace("[query]", prompt)
+                system_prompt = system_prompt.replace("[usage]", usage_text)
+                
+                print(system_prompt)
+                
+                data["messages"] = add_or_update_system_message(
+                    f"\n{system_prompt}", data["messages"]
+                )
+                
+            
             modified_body_bytes = json.dumps(data).encode("utf-8")
 
             # Replace the request body with the modified one
@@ -381,6 +448,7 @@ class ChatCompletionMiddleware(BaseHTTPMiddleware):
             ]
 
         response = await call_next(request)
+        
 
         if return_citations:
             # Inject the citations into the response
@@ -395,7 +463,7 @@ class ChatCompletionMiddleware(BaseHTTPMiddleware):
                     return StreamingResponse(
                         self.ollama_stream_wrapper(response.body_iterator, citations),
                     )
-
+        
         return response
 
     async def _receive(self, body: bytes):
