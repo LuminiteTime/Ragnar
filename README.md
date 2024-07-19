@@ -105,62 +105,13 @@ Ragnar is designed to be simple and straightforward to use. Its user-friendly in
 
 # Installation Guide
 
-Welcome to Ragnar MVP-v4! This guide will walk you through cloning the repository and starting the application using Docker.
+Welcome to Ragnar! This guide will walk you through cloning the repository and starting the application using Docker.
 
-<<<<<<< 1bf203ca907fdfe832dc5d657f443b8b876530d3
 To install the stable and the newest version of Ragnar run this command in terminal:
 ``` sh 
 sudo docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v ragnar:/app/backend/data --name ragnar --restart always luminitetime/ragnar_final:latest
 ```
 After all will be downloaded you can open ragnar on http://localhost:3000 
-=======
-### Without Olama app
-
-1. Unzip release files
-2. Ensure you have Docker installed and running on your machine
-3. Open terminal
-4. In terminal type:
-
-    4.1.
-    ```sh
-    cd <path-to-release-folder>
-    ```
-    4.2.
-    ```sh
-    docker compose up -d
-    ```
-5. Go to http://localhost:3000 
-6. Wait a little bit, it may take some time to start the app (Around 5 minutes, you can track the progress in Ragnar container in docker, if there are lines 
-
-" Loading WEBUI_SECRET_KEY from file, not provided as an environment variable.
-
-Generating WEBUI_SECRET_KEY
-
-Loading WEBUI_SECRET_KEY from .webui_secret_key "
-
-then the app is starting normally)
-
-7. When the logo of Ragnar appears on the page, the app is running
-
-### With Ollama app
-
-1. Download [Ollama](https://ollama.com) from official site 
-2. Run in terminal command to download LLM:
-    ``` sh
-    ollama run NAME_OF_THE_MODEL
-    ```
-    in our case:
-    ``` sh
-    ollama run phi3:mini
-    ```
-3. Ensure you have Docker installed and running on your machine
-4. When instalation will be succesfully ended run next command in terminal
-   ```sh
-   docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v ragnar:/app/backend/data --name ragnar --restart always brainpumpkin/ragnar:latest
-   ```
-5. Enjoy using ragnar
-6. For next runnnings you will need run ollama ([step 2](#with-ollama-app)) and run docker container ([step 4](#with-ollama-app))
->>>>>>> f2edf75de2ba1b083254deff99163191403ee863
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
