@@ -69,7 +69,7 @@
 
 	let visionCapableModels = [];
 	$: visionCapableModels = [...(atSelectedModel ? [atSelectedModel] : selectedModels)].filter(
-		(model) => $models.find((m) => m.id === model)?.info?.meta?.capabilities?.vision ?? true
+			(model) => $models.find((m) => m.id === model)?.info?.meta?.capabilities?.vision ?? true
 	);
 
 	$: if (prompt) {
@@ -229,16 +229,16 @@
 							};
 							reader.readAsDataURL(file);
 						} else if (
-							SUPPORTED_FILE_TYPE.includes(file['type']) ||
-							SUPPORTED_FILE_EXTENSIONS.includes(file.name.split('.').at(-1))
+								SUPPORTED_FILE_TYPE.includes(file['type']) ||
+								SUPPORTED_FILE_EXTENSIONS.includes(file.name.split('.').at(-1))
 						) {
 							uploadDoc(file);
 						} else {
 							toast.error(
-								$i18n.t(
-									`Unknown File Type '{{file_type}}', but accepting and treating as plain text`,
-									{ file_type: file['type'] }
-								)
+									$i18n.t(
+											`Unknown File Type '{{file_type}}', but accepting and treating as plain text`,
+											{ file_type: file['type'] }
+									)
 							);
 							uploadDoc(file);
 						}
@@ -269,12 +269,12 @@
 
 {#if dragged}
 	<div
-		class="fixed {$showSidebar
+			class="fixed {$showSidebar
 			? 'left-0 md:left-[260px] md:w-[calc(100%-260px)]'
 			: 'left-0'}  w-full h-full flex z-50 touch-none pointer-events-none"
-		id="dropzone"
-		role="region"
-		aria-label="Drag and Drop Container"
+			id="dropzone"
+			role="region"
+			aria-label="Drag and Drop Container"
 	>
 		<div class="absolute w-full h-full backdrop-blur bg-gray-800/40 flex justify-center">
 			<div class="m-auto pt-64 flex flex-col justify-center">
@@ -293,22 +293,22 @@
 				{#if autoScroll === false && messages.length > 0}
 					<div class=" absolute -top-12 left-0 right-0 flex justify-center z-30">
 						<button
-							class=" bg-white border border-gray-100 dark:border-none dark:bg-white/20 p-1.5 rounded-full"
-							on:click={() => {
+								class=" bg-white border border-gray-100 dark:border-none dark:bg-white/20 p-1.5 rounded-full"
+								on:click={() => {
 								autoScroll = true;
 								scrollToBottom();
 							}}
 						>
 							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 20 20"
-								fill="currentColor"
-								class="w-5 h-5"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 20 20"
+									fill="currentColor"
+									class="w-5 h-5"
 							>
 								<path
-									fill-rule="evenodd"
-									d="M10 3a.75.75 0 01.75.75v10.638l3.96-4.158a.75.75 0 111.08 1.04l-5.25 5.5a.75.75 0 01-1.08 0l-5.25-5.5a.75.75 0 111.08-1.04l3.96 4.158V3.75A.75.75 0 0110 3z"
-									clip-rule="evenodd"
+										fill-rule="evenodd"
+										d="M10 3a.75.75 0 01.75.75v10.638l3.96-4.158a.75.75 0 111.08 1.04l-5.25 5.5a.75.75 0 01-1.08 0l-5.25-5.5a.75.75 0 111.08-1.04l3.96 4.158V3.75A.75.75 0 0110 3z"
+										clip-rule="evenodd"
 								/>
 							</svg>
 						</button>
@@ -321,17 +321,17 @@
 					<Prompts bind:this={promptsElement} bind:prompt bind:files />
 				{:else if prompt.charAt(0) === '#'}
 					<Documents
-						bind:this={documentsElement}
-						bind:prompt
-						on:youtube={(e) => {
+							bind:this={documentsElement}
+							bind:prompt
+							on:youtube={(e) => {
 							console.log(e);
 							uploadYoutubeTranscription(e.detail);
 						}}
-						on:url={(e) => {
+							on:url={(e) => {
 							console.log(e);
 							uploadWeb(e.detail);
 						}}
-						on:select={(e) => {
+							on:select={(e) => {
 							console.log(e);
 							files = [
 								...files,
@@ -346,12 +346,12 @@
 				{/if}
 
 				<Models
-					bind:this={modelsElement}
-					bind:prompt
-					bind:user
-					bind:chatInputPlaceholder
-					{messages}
-					on:select={(e) => {
+						bind:this={modelsElement}
+						bind:prompt
+						bind:user
+						bind:chatInputPlaceholder
+						{messages}
+						on:select={(e) => {
 						atSelectedModel = e.detail;
 						chatTextAreaElement?.focus();
 					}}
@@ -359,14 +359,14 @@
 
 				{#if atSelectedModel !== undefined}
 					<div
-						class="px-3 py-2.5 text-left w-full flex justify-between items-center absolute bottom-0 left-0 right-0 bg-gradient-to-t from-50% from-white dark:from-gray-900"
+							class="px-3 py-2.5 text-left w-full flex justify-between items-center absolute bottom-0 left-0 right-0 bg-gradient-to-t from-50% from-white dark:from-gray-900"
 					>
 						<div class="flex items-center gap-2 text-sm dark:text-gray-500">
 							<img
-								crossorigin="anonymous"
-								alt="model profile"
-								class="size-5 max-w-[28px] object-cover rounded-full"
-								src={$models.find((model) => model.id === atSelectedModel.id)?.info?.meta
+									crossorigin="anonymous"
+									alt="model profile"
+									class="size-5 max-w-[28px] object-cover rounded-full"
+									src={$models.find((model) => model.id === atSelectedModel.id)?.info?.meta
 									?.profile_image_url ??
 									($i18n.language === 'dg-DG'
 										? `/doge.png`
@@ -378,8 +378,8 @@
 						</div>
 						<div>
 							<button
-								class="flex items-center"
-								on:click={() => {
+									class="flex items-center"
+									on:click={() => {
 									atSelectedModel = undefined;
 								}}
 							>
@@ -396,12 +396,12 @@
 		<div class="max-w-6xl px-2.5 md:px-6 mx-auto inset-x-0">
 			<div class=" pb-2">
 				<input
-					bind:this={filesInputElement}
-					bind:files={inputFiles}
-					type="file"
-					hidden
-					multiple
-					on:change={async () => {
+						bind:this={filesInputElement}
+						bind:files={inputFiles}
+						type="file"
+						hidden
+						multiple
+						on:change={async () => {
 						if (inputFiles && inputFiles.length > 0) {
 							const _inputFiles = Array.from(inputFiles);
 							_inputFiles.forEach((file) => {
@@ -450,14 +450,14 @@
 
 				{#if recording}
 					<VoiceRecording
-						bind:recording
-						on:cancel={async () => {
+							bind:recording
+							on:cancel={async () => {
 							recording = false;
 
 							await tick();
 							document.getElementById('chat-textarea')?.focus();
 						}}
-						on:confirm={async (e) => {
+							on:confirm={async (e) => {
 							const response = e.detail;
 							prompt = `${prompt}${response} `;
 
@@ -473,15 +473,15 @@
 					/>
 				{:else}
 					<form
-						class="w-full flex gap-1.5"
-						on:submit|preventDefault={() => {
+							class="w-full flex gap-1.5"
+							on:submit|preventDefault={() => {
 							// check if selectedModels support image input
 							submitPrompt(prompt, user);
 						}}
 					>
 						<div
-							class="flex-1 flex flex-col relative w-full rounded-3xl px-1.5 bg-gray-50 dark:bg-gray-850 dark:text-gray-100"
-							dir={$settings?.chatDirection ?? 'LTR'}
+								class="flex-1 flex flex-col relative w-full rounded-3xl px-1.5 bg-gray-50 dark:bg-gray-850 dark:text-gray-100"
+								dir={$settings?.chatDirection ?? 'LTR'}
 						>
 							{#if files.length > 0}
 								<div class="mx-2 mt-2 mb-1 flex flex-wrap gap-2">
@@ -490,29 +490,29 @@
 											{#if file.type === 'image'}
 												<div class="relative">
 													<img
-														src={file.url}
-														alt="input"
-														class=" h-16 w-16 rounded-xl object-cover"
+															src={file.url}
+															alt="input"
+															class=" h-16 w-16 rounded-xl object-cover"
 													/>
 													{#if atSelectedModel ? visionCapableModels.length === 0 : selectedModels.length !== visionCapableModels.length}
 														<Tooltip
-															className=" absolute top-1 left-1"
-															content={$i18n.t('{{ models }}', {
+																className=" absolute top-1 left-1"
+																content={$i18n.t('{{ models }}', {
 																models: [...(atSelectedModel ? [atSelectedModel] : selectedModels)]
 																	.filter((id) => !visionCapableModels.includes(id))
 																	.join(', ')
 															})}
 														>
 															<svg
-																xmlns="http://www.w3.org/2000/svg"
-																viewBox="0 0 24 24"
-																fill="currentColor"
-																class="size-4 fill-yellow-300"
+																	xmlns="http://www.w3.org/2000/svg"
+																	viewBox="0 0 24 24"
+																	fill="currentColor"
+																	class="size-4 fill-yellow-300"
 															>
 																<path
-																	fill-rule="evenodd"
-																	d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
-																	clip-rule="evenodd"
+																		fill-rule="evenodd"
+																		d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
+																		clip-rule="evenodd"
 																/>
 															</svg>
 														</Tooltip>
@@ -520,71 +520,71 @@
 												</div>
 											{:else if file.type === 'doc'}
 												<div
-													class="h-16 w-[15rem] flex items-center space-x-3 px-2.5 dark:bg-gray-600 rounded-xl border border-gray-200 dark:border-none"
+														class="h-16 w-[15rem] flex items-center space-x-3 px-2.5 dark:bg-gray-600 rounded-xl border border-gray-200 dark:border-none"
 												>
 													<div class="p-2.5 bg-red-400 text-white rounded-lg">
 														{#if file.upload_status}
 															<svg
-																xmlns="http://www.w3.org/2000/svg"
-																viewBox="0 0 24 24"
-																fill="currentColor"
-																class="w-6 h-6"
+																	xmlns="http://www.w3.org/2000/svg"
+																	viewBox="0 0 24 24"
+																	fill="currentColor"
+																	class="w-6 h-6"
 															>
 																<path
-																	fill-rule="evenodd"
-																	d="M5.625 1.5c-1.036 0-1.875.84-1.875 1.875v17.25c0 1.035.84 1.875 1.875 1.875h12.75c1.035 0 1.875-.84 1.875-1.875V12.75A3.75 3.75 0 0 0 16.5 9h-1.875a1.875 1.875 0 0 1-1.875-1.875V5.25A3.75 3.75 0 0 0 9 1.5H5.625ZM7.5 15a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 7.5 15Zm.75 2.25a.75.75 0 0 0 0 1.5H12a.75.75 0 0 0 0-1.5H8.25Z"
-																	clip-rule="evenodd"
+																		fill-rule="evenodd"
+																		d="M5.625 1.5c-1.036 0-1.875.84-1.875 1.875v17.25c0 1.035.84 1.875 1.875 1.875h12.75c1.035 0 1.875-.84 1.875-1.875V12.75A3.75 3.75 0 0 0 16.5 9h-1.875a1.875 1.875 0 0 1-1.875-1.875V5.25A3.75 3.75 0 0 0 9 1.5H5.625ZM7.5 15a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 0 1.5h-7.5A.75.75 0 0 1 7.5 15Zm.75 2.25a.75.75 0 0 0 0 1.5H12a.75.75 0 0 0 0-1.5H8.25Z"
+																		clip-rule="evenodd"
 																/>
 																<path
-																	d="M12.971 1.816A5.23 5.23 0 0 1 14.25 5.25v1.875c0 .207.168.375.375.375H16.5a5.23 5.23 0 0 1 3.434 1.279 9.768 9.768 0 0 0-6.963-6.963Z"
+																		d="M12.971 1.816A5.23 5.23 0 0 1 14.25 5.25v1.875c0 .207.168.375.375.375H16.5a5.23 5.23 0 0 1 3.434 1.279 9.768 9.768 0 0 0-6.963-6.963Z"
 																/>
 															</svg>
 														{:else}
 															<svg
-																class=" w-6 h-6 translate-y-[0.5px]"
-																fill="currentColor"
-																viewBox="0 0 24 24"
-																xmlns="http://www.w3.org/2000/svg"
-																><style>
-																	.spinner_qM83 {
-																		animation: spinner_8HQG 1.05s infinite;
+																	class=" w-6 h-6 translate-y-[0.5px]"
+																	fill="currentColor"
+																	viewBox="0 0 24 24"
+																	xmlns="http://www.w3.org/2000/svg"
+															><style>
+																.spinner_qM83 {
+																	animation: spinner_8HQG 1.05s infinite;
+																}
+																.spinner_oXPr {
+																	animation-delay: 0.1s;
+																}
+																.spinner_ZTLf {
+																	animation-delay: 0.2s;
+																}
+																@keyframes spinner_8HQG {
+																	0%,
+																	57.14% {
+																		animation-timing-function: cubic-bezier(0.33, 0.66, 0.66, 1);
+																		transform: translate(0);
 																	}
-																	.spinner_oXPr {
-																		animation-delay: 0.1s;
+																	28.57% {
+																		animation-timing-function: cubic-bezier(0.33, 0, 0.66, 0.33);
+																		transform: translateY(-6px);
 																	}
-																	.spinner_ZTLf {
-																		animation-delay: 0.2s;
+																	100% {
+																		transform: translate(0);
 																	}
-																	@keyframes spinner_8HQG {
-																		0%,
-																		57.14% {
-																			animation-timing-function: cubic-bezier(0.33, 0.66, 0.66, 1);
-																			transform: translate(0);
-																		}
-																		28.57% {
-																			animation-timing-function: cubic-bezier(0.33, 0, 0.66, 0.33);
-																			transform: translateY(-6px);
-																		}
-																		100% {
-																			transform: translate(0);
-																		}
-																	}
-																</style><circle
+																}
+															</style><circle
 																	class="spinner_qM83"
 																	cx="4"
 																	cy="12"
 																	r="2.5"
-																/><circle
+															/><circle
 																	class="spinner_qM83 spinner_oXPr"
 																	cx="12"
 																	cy="12"
 																	r="2.5"
-																/><circle
+															/><circle
 																	class="spinner_qM83 spinner_ZTLf"
 																	cx="20"
 																	cy="12"
 																	r="2.5"
-																/></svg
+															/></svg
 															>
 														{/if}
 													</div>
@@ -599,20 +599,20 @@
 												</div>
 											{:else if file.type === 'collection'}
 												<div
-													class="h-16 w-[15rem] flex items-center space-x-3 px-2.5 dark:bg-gray-600 rounded-xl border border-gray-200 dark:border-none"
+														class="h-16 w-[15rem] flex items-center space-x-3 px-2.5 dark:bg-gray-600 rounded-xl border border-gray-200 dark:border-none"
 												>
 													<div class="p-2.5 bg-red-400 text-white rounded-lg">
 														<svg
-															xmlns="http://www.w3.org/2000/svg"
-															viewBox="0 0 24 24"
-															fill="currentColor"
-															class="w-6 h-6"
+																xmlns="http://www.w3.org/2000/svg"
+																viewBox="0 0 24 24"
+																fill="currentColor"
+																class="w-6 h-6"
 														>
 															<path
-																d="M7.5 3.375c0-1.036.84-1.875 1.875-1.875h.375a3.75 3.75 0 0 1 3.75 3.75v1.875C13.5 8.161 14.34 9 15.375 9h1.875A3.75 3.75 0 0 1 21 12.75v3.375C21 17.16 20.16 18 19.125 18h-9.75A1.875 1.875 0 0 1 7.5 16.125V3.375Z"
+																	d="M7.5 3.375c0-1.036.84-1.875 1.875-1.875h.375a3.75 3.75 0 0 1 3.75 3.75v1.875C13.5 8.161 14.34 9 15.375 9h1.875A3.75 3.75 0 0 1 21 12.75v3.375C21 17.16 20.16 18 19.125 18h-9.75A1.875 1.875 0 0 1 7.5 16.125V3.375Z"
 															/>
 															<path
-																d="M15 5.25a5.23 5.23 0 0 0-1.279-3.434 9.768 9.768 0 0 1 6.963 6.963A5.23 5.23 0 0 0 17.25 7.5h-1.875A.375.375 0 0 1 15 7.125V5.25ZM4.875 6H6v10.125A3.375 3.375 0 0 0 9.375 19.5H16.5v1.125c0 1.035-.84 1.875-1.875 1.875h-9.75A1.875 1.875 0 0 1 3 20.625V7.875C3 6.839 3.84 6 4.875 6Z"
+																	d="M15 5.25a5.23 5.23 0 0 0-1.279-3.434 9.768 9.768 0 0 1 6.963 6.963A5.23 5.23 0 0 0 17.25 7.5h-1.875A.375.375 0 0 1 15 7.125V5.25ZM4.875 6H6v10.125A3.375 3.375 0 0 0 9.375 19.5H16.5v1.125c0 1.035-.84 1.875-1.875 1.875h-9.75A1.875 1.875 0 0 1 3 20.625V7.875C3 6.839 3.84 6 4.875 6Z"
 															/>
 														</svg>
 													</div>
@@ -629,21 +629,21 @@
 
 											<div class=" absolute -top-1 -right-1">
 												<button
-													class=" bg-gray-400 text-white border border-white rounded-full group-hover:visible invisible transition"
-													type="button"
-													on:click={() => {
+														class=" bg-gray-400 text-white border border-white rounded-full group-hover:visible invisible transition"
+														type="button"
+														on:click={() => {
 														files.splice(fileIdx, 1);
 														files = files;
 													}}
 												>
 													<svg
-														xmlns="http://www.w3.org/2000/svg"
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														class="w-4 h-4"
+															xmlns="http://www.w3.org/2000/svg"
+															viewBox="0 0 20 20"
+															fill="currentColor"
+															class="w-4 h-4"
 													>
 														<path
-															d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
+																d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
 														/>
 													</svg>
 												</button>
@@ -656,9 +656,9 @@
 							<div class=" flex">
 								<div class=" ml-0.5 self-end mb-1.5 flex space-x-1">
 									<InputMenu
-										bind:webSearchEnabled
-										bind:selectedToolIds
-										tools={$tools.reduce((a, e, i, arr) => {
+											bind:webSearchEnabled
+											bind:selectedToolIds
+											tools={$tools.reduce((a, e, i, arr) => {
 											if (availableToolIds.includes(e.id) || ($_user?.role ?? 'user') === 'admin') {
 												a[e.id] = {
 													name: e.name,
@@ -668,26 +668,60 @@
 											}
 											return a;
 										}, {})}
-										uploadFilesHandler={() => {
+											uploadFilesHandler={() => {
 											filesInputElement.click();
 										}}
-										onClose={async () => {
+											onClose={async () => {
 											await tick();
 											chatTextAreaElement?.focus();
 										}}
+											submitPrompt={async (p) => {
+											let text = p;
+
+											if (p.includes('{{CLIPBOARD}}')) {
+												const clipboardText = await navigator.clipboard.readText().catch((err) => {
+													toast.error($i18n.t('Failed to read clipboard contents'));
+													return '{{CLIPBOARD}}';
+												});
+
+												text = p.replaceAll('{{CLIPBOARD}}', clipboardText);
+											}
+
+											prompt = text;
+
+											await tick();
+
+											const chatInputElement = document.getElementById('chat-textarea');
+											if (chatInputElement) {
+												prompt = p;
+
+												chatInputElement.style.height = '';
+												chatInputElement.style.height = Math.min(chatInputElement.scrollHeight, 200) + 'px';
+												chatInputElement.focus();
+
+												const words = findWordIndices(prompt);
+
+												if (words.length > 0) {
+													const word = words.at(0);
+													chatInputElement.setSelectionRange(word?.startIndex, word.endIndex + 1);
+												}
+											}
+
+											await tick();
+										}}
 									>
 										<button
-											class="bg-gray-50 hover:bg-gray-100 text-gray-800 dark:bg-gray-850 dark:text-white dark:hover:bg-gray-800 transition rounded-full p-2 outline-none focus:outline-none"
-											type="button"
+												class="bg-gray-50 hover:bg-gray-100 text-gray-800 dark:bg-gray-850 dark:text-white dark:hover:bg-gray-800 transition rounded-full p-2 outline-none focus:outline-none"
+												type="button"
 										>
 											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												viewBox="0 0 16 16"
-												fill="currentColor"
-												class="size-5"
+													xmlns="http://www.w3.org/2000/svg"
+													viewBox="0 0 16 16"
+													fill="currentColor"
+													class="size-5"
 											>
 												<path
-													d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z"
+														d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z"
 												/>
 											</svg>
 										</button>
@@ -695,14 +729,14 @@
 								</div>
 
 								<textarea
-									id="chat-textarea"
-									bind:this={chatTextAreaElement}
-									class="scrollbar-hidden bg-gray-50 dark:bg-gray-850 dark:text-gray-100 outline-none w-full py-3 px-1 rounded-xl resize-none h-[48px]"
-									placeholder={chatInputPlaceholder !== ''
+										id="chat-textarea"
+										bind:this={chatTextAreaElement}
+										class="scrollbar-hidden bg-gray-50 dark:bg-gray-850 dark:text-gray-100 outline-none w-full py-3 px-1 rounded-xl resize-none h-[48px]"
+										placeholder={chatInputPlaceholder !== ''
 										? chatInputPlaceholder
 										: $i18n.t('Waiting for your message...')}
-									bind:value={prompt}
-									on:keypress={(e) => {
+										bind:value={prompt}
+										on:keypress={(e) => {
 										if (
 											!$mobile ||
 											!(
@@ -722,7 +756,7 @@
 											}
 										}
 									}}
-									on:keydown={async (e) => {
+										on:keydown={async (e) => {
 										const isCtrlPressed = e.ctrlKey || e.metaKey; // metaKey is for Cmd key on Mac
 
 										// Check if Ctrl + R is pressed
@@ -827,17 +861,17 @@
 											atSelectedModel = undefined;
 										}
 									}}
-									rows="1"
-									on:input={(e) => {
+										rows="1"
+										on:input={(e) => {
 										e.target.style.height = '';
 										e.target.style.height = Math.min(e.target.scrollHeight, 200) + 'px';
 										user = null;
 									}}
-									on:focus={(e) => {
+										on:focus={(e) => {
 										e.target.style.height = '';
 										e.target.style.height = Math.min(e.target.scrollHeight, 200) + 'px';
 									}}
-									on:paste={(e) => {
+										on:paste={(e) => {
 										const clipboardData = e.clipboardData || window.clipboardData;
 
 										if (clipboardData && clipboardData.items) {
@@ -875,23 +909,23 @@
 									<div class=" flex items-center mb-1">
 										<Tooltip content={$i18n.t('ageSend mess')}>
 											<button
-												id="send-message-button"
-												class="{prompt !== ''
+													id="send-message-button"
+													class="{prompt !== ''
 													? 'bg-black text-white hover:bg-gray-900 dark:bg-white dark:text-black dark:hover:bg-gray-100 '
 													: 'text-white bg-gray-200 dark:text-gray-900 dark:bg-gray-700 disabled'} transition rounded-full p-1.5 m-0.5 self-center"
-												type="submit"
-												disabled={prompt === ''}
+													type="submit"
+													disabled={prompt === ''}
 											>
 												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													viewBox="0 0 16 16"
-													fill="currentColor"
-													class="size-6"
+														xmlns="http://www.w3.org/2000/svg"
+														viewBox="0 0 16 16"
+														fill="currentColor"
+														class="size-6"
 												>
 													<path
-														fill-rule="evenodd"
-														d="M8 14a.75.75 0 0 1-.75-.75V4.56L4.03 7.78a.75.75 0 0 1-1.06-1.06l4.5-4.5a.75.75 0 0 1 1.06 0l4.5 4.5a.75.75 0 0 1-1.06 1.06L8.75 4.56v8.69A.75.75 0 0 1 8 14Z"
-														clip-rule="evenodd"
+															fill-rule="evenodd"
+															d="M8 14a.75.75 0 0 1-.75-.75V4.56L4.03 7.78a.75.75 0 0 1-1.06-1.06l4.5-4.5a.75.75 0 0 1 1.06 0l4.5 4.5a.75.75 0 0 1-1.06 1.06L8.75 4.56v8.69A.75.75 0 0 1 8 14Z"
+															clip-rule="evenodd"
 													/>
 												</svg>
 											</button>
@@ -901,21 +935,21 @@
 							{:else}
 								<div class=" flex items-center mb-1.5">
 									<button
-										class="bg-white hover:bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-800 transition rounded-full p-1.5"
-										on:click={() => {
+											class="bg-white hover:bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-800 transition rounded-full p-1.5"
+											on:click={() => {
 											stopResponse();
 										}}
 									>
 										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											viewBox="0 0 24 24"
-											fill="currentColor"
-											class="size-6"
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="currentColor"
+												class="size-6"
 										>
 											<path
-												fill-rule="evenodd"
-												d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm6-2.438c0-.724.588-1.312 1.313-1.312h4.874c.725 0 1.313.588 1.313 1.313v4.874c0 .725-.588 1.313-1.313 1.313H9.564a1.312 1.312 0 01-1.313-1.313V9.564z"
-												clip-rule="evenodd"
+													fill-rule="evenodd"
+													d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm6-2.438c0-.724.588-1.312 1.313-1.312h4.874c.725 0 1.313.588 1.313 1.313v4.874c0 .725-.588 1.313-1.313 1.313H9.564a1.312 1.312 0 01-1.313-1.313V9.564z"
+													clip-rule="evenodd"
 											/>
 										</svg>
 									</button>
