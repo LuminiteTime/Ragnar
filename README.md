@@ -22,18 +22,30 @@
             <li> <a href="#features">Features</a> </li>
             <li> <a href="#build-with">Build with</a> </li>
         </ul>
-        <li> <a href="#installation-guide">Installation Guide</a> </li>
+        <li> <a href="#installation-guide">Installation Guide</a>
+            <ul>
+                <li>
+                    <a href="#simple-installation">Simple installation</a>
+                </li>
+                <li>
+                    <a href="#installation-using-build">Installation using build</a>
+                </li>
+                <li>
+                    <a href="#after-installation">After installation</a>
+                </li>
+            </ul>
+        </li>
         <li>
             <a href="#usage-instructions">Usage Instructions</a>
             <ul>
                 <li>
-                <a href="#upload-documents"> Upload Documents</a>
+                <a href="#upload-documents">Upload Documents</a>
                 </li>
                 <li>
                 <a href="#chat-with-llm">Chat with LLM</a>
                 </li>
                 <li>
-                    <a href="#work-with-responses"> Work with responses</a>
+                    <a href="#work-with-responses">Work with responses</a>
                 </li>
             </ul>
         </li>
@@ -105,13 +117,62 @@ Ragnar is designed to be simple and straightforward to use. Its user-friendly in
 
 # Installation Guide
 
-Welcome to Ragnar! This guide will walk you through cloning the repository and starting the application using Docker.
+Welcome to Ragnar! This guide will walk you through the process of installing Ragnar using Docker. To install the stable and the newest version of Ragnar follow one of the next installations:
 
-To install the stable and the newest version of Ragnar run this command in terminal:
+### <ins id="simple-installation">Simple installation</ins>
+
+Run this command in terminal:
 ``` sh 
-sudo docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v ragnar:/app/backend/data --name ragnar --restart always luminitetime/ragnar_final:latest
+sudo docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v ragnar:/app/backend/data --name ragnar --restart always luminitetime/ragnar:v1.0.0
 ```
-After all will be downloaded you can open ragnar on http://localhost:3000 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### <ins id="installation-using-build">Installation using build</ins>
+
+In terminal clone Ragnar repository:
+```sh
+https://gitlab.pg.innopolis.university/m.trifonov/ragnar.git
+```
+
+Then go to the cloned repository directory:
+```sh
+cd <your-path-to-repo>/ragnar
+```
+
+Build the app using docker:
+```sh
+docker build -t ragnar . --no-cache
+```
+
+Run the built container:
+```sh
+docker run -p 3000:8080 ragnar
+```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### <ins id="after-installation">After installation</ins>
+
+When everything is downloaded you can open Ragnar on http://localhost:3000. Please note, that Ragnar needs some time to start, you cna track the progress of starting Ragnar by following instructions depending on the way you use Docker:
+
+- Without Docker Desktop: 
+
+Type ```docker ps -a``` and find Container ID of Ragnar, copy this ID and paste it in the next command ```docker logs <container-id>```.
+
+- With Docker Desktop:
+
+Open ```ragnar``` container in Docker Desktop and find section with logs, it will be updated automatically as Ragnar proceeds.
+
+If you see
+
+```
+ ______
+|  __  \   __     __ _ _ __     __   _ ___
+| |__) / / _ '| / _ ' | '_ \  / _ '|| '_  \
+|      \| (_| || (_|  | | | || (_| ||  ^  /
+|__|\___|\__/\| \___/ |_| |_| \__/\||_|-\_\
+                /____/
+```
+in logs then Ragnar is ready to serve you!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
