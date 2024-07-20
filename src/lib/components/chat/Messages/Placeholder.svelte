@@ -30,8 +30,8 @@
 
 {#key mounted}
 	<div class="m-auto w-full max-w-6xl px-8 lg:px-24 pb-10">
-		<div class="flex justify-start">
-			<div class="flex -space-x-4 mb-1" in:fade={{ duration: 200 }}>
+		<div class="flex justify-center">
+			<div class="flex -space-x-4 mb-4" in:fade={{ duration: 200 }}>
 				{#each models as model, modelIdx}
 					<button
 						on:click={() => {
@@ -42,10 +42,11 @@
 							crossorigin="anonymous"
 							src={model?.info?.meta?.profile_image_url ??
 								($i18n.language === 'dg-DG' ? `/doge.png` : `${WEBUI_BASE_URL}/static/favicon.png`)}
-							class=" size-[2.7rem] rounded-full border-[1px] border-gray-200 dark:border-none"
+							class="size-[4.5rem] rounded-full border-[1px] border-gray-200 dark:border-none"
 							alt="logo"
 							draggable="false"
 						/>
+						Ragnar
 					</button>
 				{/each}
 			</div>
