@@ -190,7 +190,7 @@
 	</div>
 </div>
 
-<div class=" flex w-full space-x-2">
+<div class=" flex w-1/2 space-x-2 border-b border-gray-200 pb-2.5">
 	<div class="flex flex-1">
 		<div class=" self-center ml-1 mr-3">
 			<svg
@@ -207,15 +207,15 @@
 			</svg>
 		</div>
 		<input
-			class=" w-full text-sm pr-4 py-1 rounded-r-xl outline-none bg-transparent"
+			class="w-full text-sm pr-4 py-1 rounded-r-xl outline-none bg-transparent"
 			bind:value={query}
 			placeholder={$i18n.t('Search Documents')}
 		/>
 	</div>
 
-	<div>
+	<div class="">
 		<button
-			class=" px-2 py-2 rounded-xl border border-gray-200 dark:border-gray-600 dark:border-0 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 transition font-medium text-sm flex items-center space-x-1"
+			class="px-4 py-2 w-full rounded-xl border border-gray-200 dark:border-gray-600 dark:border-0 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 transition font-medium text-sm flex items-center space-x-1"
 			on:click={() => {
 				showAddDocModal = true;
 			}}
@@ -253,8 +253,6 @@
         </div>
     </div>
 </div> -->
-
-<hr class=" dark:border-gray-850 my-2.5" />
 
 {#if tags.length > 0}
 	<div class="px-2.5 pt-1 flex gap-1 flex-wrap">

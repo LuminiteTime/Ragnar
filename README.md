@@ -22,18 +22,30 @@
             <li> <a href="#features">Features</a> </li>
             <li> <a href="#build-with">Build with</a> </li>
         </ul>
-        <li> <a href="#installation-guide">Installation Guide</a> </li>
+        <li> <a href="#installation-guide">Installation Guide</a>
+            <ul>
+                <li>
+                    <a href="#simple-installation">Simple installation</a>
+                </li>
+                <li>
+                    <a href="#installation-using-build">Installation using build</a>
+                </li>
+                <li>
+                    <a href="#after-installation">After installation</a>
+                </li>
+            </ul>
+        </li>
         <li>
             <a href="#usage-instructions">Usage Instructions</a>
             <ul>
                 <li>
-                <a href="#upload-documents"> Upload Documents</a>
+                <a href="#upload-documents">Upload Documents</a>
                 </li>
                 <li>
                 <a href="#chat-with-llm">Chat with LLM</a>
                 </li>
                 <li>
-                    <a href="#work-with-responses"> Work with responses</a>
+                    <a href="#work-with-responses">Work with responses</a>
                 </li>
             </ul>
         </li>
@@ -72,13 +84,13 @@ Ragnar is an innovative open source tool that will help the user clearly underst
 1.	**Document Summarization:** \
 Ragnar's main function is to generate short and clear paraphrases of documents. This function is useful for users who work with a large amount of various information or documentation. Ragnar will help such users highlight the main meaning in each document, skipping all unnecessary information, and present it in a user-friendly format.
 
-![AI answer](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/ai_answer.gif)
+![AI answer](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/chat.gif)
 
 
 2.	**Accurate Information Retrieval:** \
 Unlike conventional LLMs, which provide answers using previously acquired knowledge, Ragnar guarantees that all answers are obtained strictly from the documents uploaded into it. This is achieved due to the restrictions introduced into the model and pre-written prompts. The user can confidently ask Ragnar questions about the documents, knowing that he will rely only on the information in the documents.
 
-![Doc upload](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/doc_upload.gif)
+![Doc upload](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/docs.gif)
 
 3.	**Open-Source Accessibility:** \
 Since Ragnar is an open source project, we welcome collaboration and innovative ideas. Such openness of the application contributes to its greater development and continuous improvement, and it also increases confidence in the functionality of the project. Both users and developers can propose and contribute their ideas for improvement, thereby expanding the functionality of the project.
@@ -87,8 +99,8 @@ Since Ragnar is an open source project, we welcome collaboration and innovative 
 Ragnar is designed to be simple and straightforward to use. Its user-friendly interface allows the user to easily download documents and ask questions about them. The simple design makes the application accessible to all users.
 
 ![Enter](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/enter.gif)
-![Model select](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/model_select.gif)
-![Interface](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/interface.gif)
+![Model select](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/guide.gif)
+![Interface](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/uploaded.gif)
 
 
 
@@ -105,13 +117,62 @@ Ragnar is designed to be simple and straightforward to use. Its user-friendly in
 
 # Installation Guide
 
-Welcome to Ragnar! This guide will walk you through cloning the repository and starting the application using Docker.
+Welcome to Ragnar! This guide will walk you through the process of installing Ragnar using Docker. To install the stable and the newest version of Ragnar follow one of the next installations:
 
-To install the stable and the newest version of Ragnar run this command in terminal:
+### <ins id="simple-installation">Simple installation</ins>
+
+Run this command in terminal:
 ``` sh 
-sudo docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v ragnar:/app/backend/data --name ragnar --restart always luminitetime/ragnar_final:latest
+sudo docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v ragnar:/app/backend/data --name ragnar --restart always luminitetime/ragnar:v1.0.0
 ```
-After all will be downloaded you can open ragnar on http://localhost:3000 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### <ins id="installation-using-build">Installation using build</ins>
+
+In terminal clone Ragnar repository:
+```sh
+https://gitlab.pg.innopolis.university/m.trifonov/ragnar.git
+```
+
+Then go to the cloned repository directory:
+```sh
+cd <your-path-to-repo>/ragnar
+```
+
+Build the app using docker:
+```sh
+docker build -t ragnar . --no-cache
+```
+
+Run the built container:
+```sh
+docker run -p 3000:8080 ragnar
+```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### <ins id="after-installation">After installation</ins>
+
+When everything is downloaded you can open Ragnar on http://localhost:3000. Please note, that Ragnar needs some time to start, you cna track the progress of starting Ragnar by following instructions depending on the way you use Docker:
+
+- Without Docker Desktop: 
+
+Type ```docker ps -a``` and find Container ID of Ragnar, copy this ID and paste it in the next command ```docker logs <container-id>```.
+
+- With Docker Desktop:
+
+Open ```ragnar``` container in Docker Desktop and find section with logs, it will be updated automatically as Ragnar proceeds.
+
+If you see
+
+```
+ ______
+|  __  \   __     __ _ _ __     __   _ ___
+| |__) / / _ '| / _ ' | '_ \  / _ '|| '_  \
+|      \| (_| || (_|  | | | || (_| ||  ^  /
+|__|\___|\__/\| \___/ |_| |_| \__/\||_|-\_\
+                /____/
+```
+in logs then Ragnar is ready to serve you!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -119,7 +180,7 @@ After all will be downloaded you can open ragnar on http://localhost:3000
 
 ### <ins id="upload-documents">Upload Documents</ins> 
 
-There are 3 variants how to upload doceuments to the chat:
+There are 3 variants how to upload documents to the chat:
 
 **I.** Drag and drop document to the chat. It will be attached to your next message in the chat. Note that documents uploaded this way will be visible only in scope of the current chat and will not be dicplayed in the **Documents** section. 
 

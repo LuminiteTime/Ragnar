@@ -328,7 +328,7 @@ def get_model_path(model: str, update_model: bool = False):
 
     snapshot_kwargs = {
         "cache_dir": cache_dir,
-        "local_files_only": local_files_only,
+        "local_files_only": False,
     }
 
     log.debug(f"model: {model}")
