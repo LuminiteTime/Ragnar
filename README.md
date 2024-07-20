@@ -84,13 +84,13 @@ Ragnar is an innovative open source tool that will help the user clearly underst
 1.	**Document Summarization:** \
 Ragnar's main function is to generate short and clear paraphrases of documents. This function is useful for users who work with a large amount of various information or documentation. Ragnar will help such users highlight the main meaning in each document, skipping all unnecessary information, and present it in a user-friendly format.
 
-![AI answer](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/ai_answer.gif)
+![AI answer](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/chat.gif)
 
 
 2.	**Accurate Information Retrieval:** \
 Unlike conventional LLMs, which provide answers using previously acquired knowledge, Ragnar guarantees that all answers are obtained strictly from the documents uploaded into it. This is achieved due to the restrictions introduced into the model and pre-written prompts. The user can confidently ask Ragnar questions about the documents, knowing that he will rely only on the information in the documents.
 
-![Doc upload](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/doc_upload.gif)
+![Doc upload](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/docs.gif)
 
 3.	**Open-Source Accessibility:** \
 Since Ragnar is an open source project, we welcome collaboration and innovative ideas. Such openness of the application contributes to its greater development and continuous improvement, and it also increases confidence in the functionality of the project. Both users and developers can propose and contribute their ideas for improvement, thereby expanding the functionality of the project.
@@ -99,8 +99,8 @@ Since Ragnar is an open source project, we welcome collaboration and innovative 
 Ragnar is designed to be simple and straightforward to use. Its user-friendly interface allows the user to easily download documents and ask questions about them. The simple design makes the application accessible to all users.
 
 ![Enter](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/enter.gif)
-![Model select](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/model_select.gif)
-![Interface](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/interface.gif)
+![Model select](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/guide.gif)
+![Interface](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/uploaded.gif)
 
 
 
