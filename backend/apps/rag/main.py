@@ -181,11 +181,8 @@ def update_embedding_model(
     update_model: bool = False,
 ):
     embedding_model = "sentence-transformers/all-MiniLM-L6-v2"
-    print("EHEHEHEHE")
-    print(embedding_model)
-    print("EHEHEHEHE")
-    print(app.state.config.RAG_EMBEDDING_ENGINE)
-    print("EHEHEHEHEH")
+    # print(embedding_model)
+    # print(app.state.config.RAG_EMBEDDING_ENGINE)
     if embedding_model and app.state.config.RAG_EMBEDDING_ENGINE == "":
         app.state.sentence_transformer_ef = sentence_transformers.SentenceTransformer(
             get_model_path(embedding_model, update_model),
