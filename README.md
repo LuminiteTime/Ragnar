@@ -22,19 +22,30 @@
             <li> <a href="#features">Features</a> </li>
             <li> <a href="#build-with">Build with</a> </li>
         </ul>
-        <li> <a href="#installation-guide">Installation Guide</a> </li>
+        <li> <a href="#installation-guide">Installation Guide</a>
+            <ul>
+                <li>
+                    <a href="#simple-installation">Simple installation</a>
+                </li>
+                <li>
+                    <a href="#installation-using-build">Installation using build</a>
+                </li>
+                <li>
+                    <a href="#after-installation">After installation</a>
+                </li>
+            </ul>
+        </li>
         <li>
             <a href="#usage-instructions">Usage Instructions</a>
             <ul>
-                <li> <a href="#important-configure-llm">Important configure LLM</a> </li>
                 <li>
-                <a href="#upload-documents"> Upload Documents</a>
+                <a href="#upload-documents">Upload Documents</a>
                 </li>
                 <li>
                 <a href="#chat-with-llm">Chat with LLM</a>
                 </li>
                 <li>
-                    <a href="#work-with-responses"> Work with responses</a>
+                    <a href="#work-with-responses">Work with responses</a>
                 </li>
             </ul>
         </li>
@@ -73,13 +84,13 @@ Ragnar is an innovative open source tool that will help the user clearly underst
 1.	**Document Summarization:** \
 Ragnar's main function is to generate short and clear paraphrases of documents. This function is useful for users who work with a large amount of various information or documentation. Ragnar will help such users highlight the main meaning in each document, skipping all unnecessary information, and present it in a user-friendly format.
 
-![AI answer](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/ai_answer.gif)
+![AI answer](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/chat.gif)
 
 
 2.	**Accurate Information Retrieval:** \
 Unlike conventional LLMs, which provide answers using previously acquired knowledge, Ragnar guarantees that all answers are obtained strictly from the documents uploaded into it. This is achieved due to the restrictions introduced into the model and pre-written prompts. The user can confidently ask Ragnar questions about the documents, knowing that he will rely only on the information in the documents.
 
-![Doc upload](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/doc_upload.gif)
+![Doc upload](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/docs.gif)
 
 3.	**Open-Source Accessibility:** \
 Since Ragnar is an open source project, we welcome collaboration and innovative ideas. Such openness of the application contributes to its greater development and continuous improvement, and it also increases confidence in the functionality of the project. Both users and developers can propose and contribute their ideas for improvement, thereby expanding the functionality of the project.
@@ -88,8 +99,8 @@ Since Ragnar is an open source project, we welcome collaboration and innovative 
 Ragnar is designed to be simple and straightforward to use. Its user-friendly interface allows the user to easily download documents and ask questions about them. The simple design makes the application accessible to all users.
 
 ![Enter](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/enter.gif)
-![Model select](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/model_select.gif)
-![Interface](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/interface.gif)
+![Model select](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/guide.gif)
+![Interface](https://gitlab.pg.innopolis.university/i.abdulkhakov/ragnar-gifs/-/raw/main/uploaded.gif)
 
 
 
@@ -106,106 +117,110 @@ Ragnar is designed to be simple and straightforward to use. Its user-friendly in
 
 # Installation Guide
 
-Welcome to Ragnar MVP-v2! This guide will walk you through cloning the repository and starting the application using Docker.
+Welcome to Ragnar! This guide will walk you through the process of installing Ragnar using Docker. To install the stable and the newest version of Ragnar follow one of the next installations:
 
-### Without Olama app
+### <ins id="simple-installation">Simple installation</ins>
 
-1. Unzip release files
-2. Ensure you have Docker installed and running on your machine
-3. Open terminal
-4. In terminal type:
+Run this command in terminal:
+``` sh 
+sudo docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v ragnar:/app/backend/data --name ragnar --restart always luminitetime/ragnar:v1.0.0
+```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-    4.1.
-    ```sh
-    cd <path-to-release-folder>
-    ```
-    4.2.
-    ```sh
-    docker compose up -d
-    ```
-5. Go to http://localhost:3000
-6. Wait a little bit, it may take some time to start the app (Around 5 minutes, you can track the progress in Ragnar container in docker, if there are lines 
+### <ins id="installation-using-build">Installation using build</ins>
 
-" Loading WEBUI_SECRET_KEY from file, not provided as an environment variable.
+In terminal clone Ragnar repository:
+```sh
+https://gitlab.pg.innopolis.university/m.trifonov/ragnar.git
+```
 
-Generating WEBUI_SECRET_KEY
+Then go to the cloned repository directory:
+```sh
+cd <your-path-to-repo>/ragnar
+```
 
-Loading WEBUI_SECRET_KEY from .webui_secret_key "
+Build the app using docker:
+```sh
+docker build -t ragnar . --no-cache
+```
 
-then the app is starting normally)
+Run the built container:
+```sh
+docker run -p 3000:8080 ragnar
+```
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-7. When the logo of Ragnar appears on the page, the app is running
+### <ins id="after-installation">After installation</ins>
 
-### With Ollama app
+When everything is downloaded you can open Ragnar on http://localhost:3000. Please note, that Ragnar needs some time to start, you cna track the progress of starting Ragnar by following instructions depending on the way you use Docker:
 
-1. Download [Ollama](https://ollama.com) from official site 
-2. Run in terminal command to download LLM:
-    ``` sh
-    ollama run NAME_OF_THE_MODEL
-    ```
-    in our case:
-    ``` sh
-    ollama run phi3:mini
-    ```
-3. Ensure you have Docker installed and running on your machine
-4. When instalation will be succesfully ended run next command in terminal
-   ```sh
-   docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v ragnar:/app/backend/data --name ragnar --restart always brainpumpkin/ragnar:latest
-   ```
-5. Enjoy using ragnar
-6. For next runnnings you will need run ollama ([step 2](#with-ollama-app)) and run docker container ([step 4](#with-ollama-app))
+- Without Docker Desktop: 
+
+Type ```docker ps -a``` and find Container ID of Ragnar, copy this ID and paste it in the next command ```docker logs <container-id>```.
+
+- With Docker Desktop:
+
+Open ```ragnar``` container in Docker Desktop and find section with logs, it will be updated automatically as Ragnar proceeds.
+
+If you see
+
+```
+ ______
+|  __  \   __     __ _ _ __     __   _ ___
+| |__) / / _ '| / _ ' | '_ \  / _ '|| '_  \
+|      \| (_| || (_|  | | | || (_| ||  ^  /
+|__|\___|\__/\| \___/ |_| |_| \__/\||_|-\_\
+                /____/
+```
+in logs then Ragnar is ready to serve you!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 # Usage Instructions
 
-### Important! Configure LLM:
-To start chatting with LLM we recomend to use phi3:mini model, you can set it up by clicking arrow-down icon to the right of "Select a model" label in the top-left corner of the chat window. Then if did not download LLM earlier type ```phi3:mini``` and press "Pull phi3:mini from Ollama.com". For this step you will need Internet connection but when the model is downloaded the app does not need Internet connection.
+### <ins id="upload-documents">Upload Documents</ins> 
 
-### Upload Documents 
+There are 3 variants how to upload documents to the chat:
 
-There are 3 variants how to upload doceuments to the chat:
-1. Drag and drop document to the chat.
-2. Press at the **plus** button and the left corner of input line.
-3. Put it in **Workspace**.
-   1. At the left side pannel find chapter Workspace and move to it.
-   2. In opened window at the top find chapter Document. 
-   3. At the right side of the chapter Document find **button plus** and press it.
-   4. In opened window click at the button **Click here to select documents.**
-   5. Select Document in your files.
+**I.** Drag and drop document to the chat. It will be attached to your next message in the chat. Note that documents uploaded this way will be visible only in scope of the current chat and will not be dicplayed in the **Documents** section. 
+
+**II.** Press the **plus** button in the left corner of input line. Then you will see 2 options:
+   1.  **Upload Files** — to upload files into the chat. Note that they will be visible only in scope of the current chat.
+   2. **Use Uploaded** — to attach documents already uploaded in **Documents** section.  
+
+**III.** Put it in **Documents** section.
+
+***Important!** Only by following this step (**III**) the uploaded documents will be saved in the app storage for all chats, not only for the current.*
+   1. At the left side pannel find button **Documents** and move to it.
+   2. At the top side of the section **Documents** find **+ Add document** button and press it.
+   3. In the opened window click at the button **Click here to select documents.**
+   4. Select documents in your files.
+   5. Press **Save** button.
 
 **Where to find documents**
 
-Documents are store in **Workspace** 
-1. At the left side pannel find chapter Workspace and move to it.
-2. In opened window at the top find chapter Document.
+Documents are store in **Documents** section which you can find by pressing **Documents** button at the left side panel. There you can upload documents, delete them and edit their titles and tags in the system. 
 
-### Chat with LLM
+### <ins id="chat-with-llm">Chat with LLM</ins>
 
 **Add new chat** \
-To start new chat with LLM press **button New Chat** at the top of left side bar. 
+To start new chat with LLM press button **New Chat** at the top of the side bar. 
 
-**Choose Documents for work**\
-To choose documents with that you want to work write in input line **#** and in opened list, choose **all** if you want to work wth all Documents or specify document to work with 
+**Choose already uploaded documents to ask about**\
+You can attach files wich you want to ask Ragnar about by pressing the **plus** button in the left corner of input line and then choosing **Use Uploaded** option. This will insert **#** sign into the input line and show list of documents. Choose **All documents** if you want to attach all uploaded documents or choose documents one by one to explicitely specify them.
 
-### Work with Responses 
+### <ins id="work-with-responses">Work with Responses</ins> 
 
 **How to edit response**
 
 To edit LLM's response you need to:
-1. Find **button pencil** at the bottom of the response and press it.
-2. After pressing you wil enter to the edit mode where you can add or remove some text.
-3. After all changes press **Save** if you want to save changes and **Cancel** if you do not want to edit note.
+1. Find button with **pencil** icon at the left-bottom corner of the response and press it.
+2. After pressing you will be able to edit the response.
+3. After all changes press **Save** if you want just to save changes, **Save as note** if you want to save edited response as a note which will be then saved as a markdown file in Ragnar file storage (**Documents** section), and **Cancel** if you do not want to edit note.
 
-**How to save response as note**
+**Where to find and how to work with notes**
 
-To save LLM's response as note you need to:
-1. Find **button pencil** at the bottom of the response and press it.
-2. After pressing you wil enter to the edit mode where you can add or remove some text.
-3. After all changes press **Save as note** if you want to save response as note.
-
-
-Congratulations! You have successfully started Ragnar. 
+Saved notes are stored as markdown files and can be found in **Documents** section. You can work with them as with usual documents. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
