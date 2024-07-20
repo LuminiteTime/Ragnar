@@ -119,7 +119,7 @@ After all will be downloaded you can open ragnar on http://localhost:3000
 
 ### <ins id="upload-documents">Upload Documents</ins> 
 
-There are 3 variants how to upload doceuments to the chat:
+There are 3 variants how to upload documents to the chat:
 
 **I.** Drag and drop document to the chat. It will be attached to your next message in the chat. Note that documents uploaded this way will be visible only in scope of the current chat and will not be dicplayed in the **Documents** section. 
 
